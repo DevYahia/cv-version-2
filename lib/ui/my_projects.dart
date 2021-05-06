@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive_widget.dart';
@@ -15,7 +16,7 @@ class MyProjects extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 100),
         child: Column(
           children: [
-            Text('MY PROJECTS', style: AppStyles.title),
+            Text('APP PROJECTS', style: AppStyles.title),
             Container(width: 100, height: 2, color: AppColors.yellow),
             const SizedBox(height: 3),
             Container(width: 75, height: 2, color: AppColors.yellow),
@@ -33,7 +34,7 @@ class MyProjects extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'MY PROJECTS',
+              'APP PROJECTS',
               style: AppStyles.title,
               textAlign: TextAlign.center,
             ),
@@ -52,8 +53,7 @@ class MyProjects extends StatelessWidget {
     );
   }
 
-  Widget _buildProject(BuildContext context, Project project) =>
-      ResponsiveWidget(
+  Widget _buildProject(BuildContext context, Project project) => ResponsiveWidget(
         desktopScreen: SizedBox(
           width: MediaQuery.of(context).size.width * .7,
           child: Column(
@@ -83,31 +83,61 @@ class MyProjects extends StatelessWidget {
                         ),
                         Wrap(
                           spacing: 10,
-                          children: project.skills
-                              .map((s) => Chip(label: Text(s)))
-                              .toList(),
+                          children: project.skills.map((s) => Chip(label: Text(s))).toList(),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .025,
                         ),
-                        OutlineButton(
-                          onPressed: () {
-                            launch(project.url);
-                          },
-                          color: AppColors.yellow,
-                          textColor: AppColors.yellow,
-                          borderSide: BorderSide(
-                            color: AppColors.yellow.withOpacity(.5),
-                            width: 5,
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 50,
-                            vertical: 20,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text('Visit'),
+                        Row(
+                          children: [
+                            if (project.androidUrl != null)
+                              OutlinedButton.icon(
+                                style: OutlinedButton.styleFrom(
+                                  primary: AppColors.yellow,
+                                  textStyle: TextStyle(color: AppColors.yellow),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 50,
+                                    vertical: 20,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(
+                                      color: AppColors.yellow.withOpacity(.5),
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  launch(project.androidUrl);
+                                },
+                                icon: Icon(MaterialCommunityIcons.google_play),
+                                label: Text('Android'),
+                              ),
+                            const SizedBox(width: 20.0),
+                            if (project.iosUrl != null)
+                              OutlinedButton.icon(
+                                style: OutlinedButton.styleFrom(
+                                  primary: AppColors.yellow,
+                                  textStyle: TextStyle(color: AppColors.yellow),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 50,
+                                    vertical: 20,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(
+                                      color: AppColors.yellow.withOpacity(.5),
+                                      width: 5,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  launch(project.iosUrl);
+                                },
+                                icon: Icon(MaterialCommunityIcons.apple_ios),
+                                label: Text('iOS'),
+                              ),
+                          ],
                         ),
                       ],
                     ),
@@ -148,30 +178,61 @@ class MyProjects extends StatelessWidget {
               Wrap(
                 spacing: 10,
                 alignment: WrapAlignment.center,
-                children:
-                    project.skills.map((s) => Chip(label: Text(s))).toList(),
+                children: project.skills.map((s) => Chip(label: Text(s))).toList(),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.width * .025,
               ),
-              OutlineButton(
-                onPressed: () {
-                  launch(project.url);
-                },
-                color: AppColors.yellow,
-                textColor: AppColors.yellow,
-                borderSide: BorderSide(
-                  color: AppColors.yellow.withOpacity(.5),
-                  width: 5,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 50,
-                  vertical: 20,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text('Visit'),
+              Row(
+                children: [
+                  if (project.androidUrl != null)
+                    OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        primary: AppColors.yellow,
+                        textStyle: TextStyle(color: AppColors.yellow),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50,
+                          vertical: 20,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(
+                            color: AppColors.yellow.withOpacity(.5),
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        launch(project.androidUrl);
+                      },
+                      icon: Icon(MaterialCommunityIcons.google_play),
+                      label: Text('Android'),
+                    ),
+                  const SizedBox(width: 20.0),
+                  if (project.iosUrl != null)
+                    OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        primary: AppColors.yellow,
+                        textStyle: TextStyle(color: AppColors.yellow),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50,
+                          vertical: 20,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(
+                            color: AppColors.yellow.withOpacity(.5),
+                            width: 5,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        launch(project.iosUrl);
+                      },
+                      icon: Icon(MaterialCommunityIcons.apple_ios),
+                      label: Text('iOS'),
+                    ),
+                ],
               ),
               Divider(
                 color: AppColors.black.withOpacity(.1),

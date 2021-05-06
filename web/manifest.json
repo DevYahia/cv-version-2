@@ -1,11 +1,11 @@
 {
-    "name": "flutter_web_portfolio",
-    "short_name": "flutter_web_portfolio",
+    "name": "dev_yahia",
+    "short_name": "dev_yahia",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Portfolio for DevYahia",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

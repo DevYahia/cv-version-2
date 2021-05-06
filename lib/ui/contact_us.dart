@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_web_portfolio/ui/icon.dart';
+import 'package:dev_yahia/ui/icon.dart';
 import 'package:mailto/mailto.dart';
 
 import 'responsive_widget.dart';
@@ -47,19 +47,19 @@ class _ContactUsState extends State<ContactUs> {
                     children: [
                       _buildContactInfo(
                         'icons/email.png',
-                        'Mail Us:',
+                        'Email:',
                         AppConstants.mail,
                       ),
-                      const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'icons/call.png',
-                        'Call Us:',
-                        AppConstants.phone,
-                      ),
+                      // const SizedBox(height: 20),
+                      // _buildContactInfo(
+                      //   'icons/call.png',
+                      //   'Call Us:',
+                      //   AppConstants.phone,
+                      // ),
                       const SizedBox(height: 20),
                       _buildContactInfo(
                         'icons/pin.png',
-                        'Visit Us:',
+                        'Where we are:',
                         AppConstants.location,
                       ),
                     ],
@@ -97,19 +97,19 @@ class _ContactUsState extends State<ContactUs> {
                   children: [
                     _buildContactInfo(
                       'icons/email.png',
-                      'Mail Us:',
+                      'Email:',
                       AppConstants.mail,
                     ),
-                    const SizedBox(height: 20),
-                    _buildContactInfo(
-                      'icons/call.png',
-                      'Call Us:',
-                      AppConstants.phone,
-                    ),
+                    // const SizedBox(height: 20),
+                    // _buildContactInfo(
+                    //   'icons/call.png',
+                    //   'Call Us:',
+                    //   AppConstants.phone,
+                    // ),
                     const SizedBox(height: 20),
                     _buildContactInfo(
                       'icons/pin.png',
-                      'Visit Us:',
+                      'Where we are:',
                       AppConstants.location,
                     ),
                   ],
@@ -176,9 +176,7 @@ class _ContactUsState extends State<ContactUs> {
                   Expanded(
                     child: TextFormField(
                       validator: (text) {
-                        return (text.isValidName())
-                            ? null
-                            : 'Please insert valid name!';
+                        return (text.isValidName()) ? null : 'Please insert valid name!';
                       },
                       decoration: InputDecoration(
                         hintText: 'Your Name',
@@ -190,9 +188,7 @@ class _ContactUsState extends State<ContactUs> {
                   Expanded(
                     child: TextFormField(
                       validator: (text) {
-                        return (text.isValidEmail)
-                            ? null
-                            : 'Please insert valid email!';
+                        return (text.isValidEmail) ? null : 'Please insert valid email!';
                       },
                       decoration: InputDecoration(
                         hintText: 'Your Email',
@@ -220,8 +216,7 @@ class _ContactUsState extends State<ContactUs> {
               RaisedButton(
                 color: AppColors.yellow,
                 textColor: Colors.white,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 onPressed: _sendMail,
                 child: Text('Send'),
               ),
@@ -242,7 +237,7 @@ class _ContactUsState extends State<ContactUs> {
       body: _contentController.text.trim(),
     );
 
-    final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 3000);
+    final server = await HttpServer.bind(InternetAddress.loopbackIPv6, 3000);
     String renderHtml(Mailto mailto) =>
         '''<html><head><title>mailto example</title></head><body><a href="$mailto">Open mail client</a></body></html>''';
     await for (HttpRequest request in server) {

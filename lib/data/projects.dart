@@ -2,89 +2,83 @@ class Project {
   final String name;
   final String description;
   final String image;
-  final String url;
+  final String androidUrl;
+  final String iosUrl;
   final List<String> skills;
 
-  Project({this.name, this.description, this.image, this.url, this.skills});
+  Project({this.name, this.description, this.image, this.androidUrl, this.iosUrl, this.skills});
 }
 
 // ignore: non_constant_identifier_names
 List<Project> PROJECTS = [
+  // CHOSEN AYA
   Project(
-    name: 'Omran',
+    name: 'آية مختارة',
     description:
-        'Developing a strategic plan that can lead the Muslim Ummah towards global competitiveness and can direct the efforts of qualified and skilled youth towards optimal utilization of planning and institutional tools to contribute to the renaissance of their communities and homeland countries.',
-    image: 'images/projects/omran.png',
-    url: 'https://play.google.com/store/apps/details?id=org.omran.android',
+        'An app that shows a random verse of the Holy Quran as a notification, including tafsir, the user has control over showing the notifications and how often they show up, the user also can navigate through the whole Quran verse by verse, and export each verse as a sharable image.',
+    image: 'images/projects/chosen-aya.png',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.devyahia.randomayah',
+    iosUrl: 'https://apps.apple.com/us/app/id1547251866',
     skills: [
       'Dart',
-      'Java',
-      'Php',
-      'Sql',
+      'SQL',
       'Flutter',
-      'OneSignal',
-      'Git',
     ],
   ),
+  // MENTAL MATH
   Project(
-    name: 'Topfood',
-    description: 'Food delivery app',
-    image: 'images/projects/topfood.png',
-    url:
-        'https://play.google.com/store/apps/details?id=dz.topfood.top_food_client',
+    name: 'Mental Math',
+    description:
+        'An educational game built for Android & iOS, localized to multiple languages including (Arabic, English, German, Russian). The game has recently been featured by Apple in New Games We Love section in 25+ countries.',
+    image: 'images/projects/mental-math.png',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.devyahia.android.mentalmaths',
+    iosUrl: 'https://apps.apple.com/us/app/id1547325124',
     skills: [
       'Dart',
       'Flutter',
-      'Git',
+      'SQL',
+      'Firebase',
     ],
   ),
+  // GPA CALC
   Project(
-    name: 'Toptaxi',
+    name: 'GPA Calculator - JU',
     description:
-        'Toptaxi is a third party transportation service, which is intended to provide cars to its customers through a smart application whenever they request. The use of this application is free',
-    image: 'images/projects/toptaxi.png',
-    url: 'https://play.google.com/store/apps/details?id=toptaxi.dz',
+        'An app that keeps track of the students’ GPA, providing GPA for each semester and the cumulative GPA. For JU students only.',
+    image: 'images/projects/gpa-calc.png',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.devyahia.gpacalc',
+    iosUrl: 'https://apps.apple.com/us/app/id1551541456',
+    skills: [
+      'Dart',
+      'Flutter',
+      'SQL',
+      'Firebase',
+    ],
+  ),
+  // UNI SCHEDULE
+  Project(
+    name: 'Uni Schedule',
+    description:
+        'Students in the faculty of medicine always complained of their lecture’s changing time suddenly without prior notice, and sometimes the students missed some of their classes due to that problem, Uni schedule comes to solve this problem by providing real time access to a database that is constantly updated with the latest changes to their schedule.',
+    image: 'images/projects/uni-sched.jpg',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.devyahia.android.myschedule',
     skills: [
       'Java',
-      'Php',
-      'JavaScript',
-      'Html',
-      'Css',
-      'Sql',
       'Firebase',
-      'Laravel',
-      'OneSignal',
-      'Git',
+      'Google Sheets',
     ],
   ),
+  // FANNEH
   Project(
-    name: 'Nataloe',
+    name: 'Coin Toss',
     description:
-        'nataloe شركة جزائرية - إسبانية متخصصة بانتاج مستحضرات شبه صيدلانية للعناية اليومية بالبشرة اعتمادا على خلاصتي الألوفيرا والحلزون والزيوت الأساسية',
-    image: 'images/projects/nataloe.png',
-    url: 'https://play.google.com/store/apps/details?id=com.nataloe',
-    skills: [
-      'Kotlin',
-      'Php',
-      'JavaScript',
-      'Html',
-      'Css',
-      'Sql',
-      'Firebase',
-      'Laravel',
-      'Git',
-    ],
-  ),
-  Project(
-    name: 'جداء',
-    description:
-        'يعتبر تعليم الطفل جدول الضرب من أصعب الأمور بالنسبة للأولياء وممل بالنسبة لطفل، لكن مع التطور التكنولوجي وحب الاطفال للتكنولوجيا أصبح ذلك من أيسر المهام على الأولياء والطفل على حد سواء ؛ تطبيق جداء يعتبر الحل الامثل لتعلم جدول الضرب خطوة بخطوة بطريقة سهلة وممتعة مع أصوات خاصة بالإجابة الصحيحة أوالخاطئة، أيضا التطبيق يعطيك تقييما لمستواك خلال التعلم تقييم لكل الجداول معا وتقييم خاص لكل جدول كما يمكنك التطبيق من إجراء إمتحان مباشر لتحديد المستوى ويقوم بحفظ كل نتائجك مع التقييم والتاريخ وبالتالي يمكنك الرجوع لها في أي وقت للإطلاع عليها وملاحظة مراحل تطورك مع الوقت.',
-    image: 'images/projects/juda.png',
-    url: 'https://play.google.com/store/apps/details?id=com.ouahiddev.juda',
+        'The idea of the application is very simple, and it is clear from its name, it is yes, coin tossing, but in the currencies of the Hashemite Kingdom of Jordan.',
+    image: 'images/projects/fanneh.png',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.devyahia.fanneh',
     skills: [
       'Java',
-      'Sql',
-      'Git',
+      'Firebase',
+      'Google Sheets',
     ],
   ),
 ];

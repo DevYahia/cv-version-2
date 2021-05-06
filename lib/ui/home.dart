@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_web_portfolio/ui/responsive_widget.dart';
+import 'package:dev_yahia/ui/responsive_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'about.dart';
@@ -10,6 +10,7 @@ import 'footer.dart';
 import 'header.dart';
 import 'icon.dart';
 import 'my_projects.dart';
+import 'other_projects.dart';
 import 'statistics.dart';
 import 'working_process.dart';
 import '../config/colors.dart';
@@ -28,6 +29,7 @@ class _HomeState extends State<Home> {
   final _statisticsGlobaleKey = GlobalKey();
   final _workingProcessGlobaleKye = GlobalKey();
   final _recentProjectsGlobaleKey = GlobalKey();
+  final _recentOtherProjectsGlobaleKey = GlobalKey();
   final _contactUsGlobaleKey = GlobalKey();
 
   final _scrollController = ScrollController();
@@ -73,11 +75,7 @@ class _HomeState extends State<Home> {
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        colors: [
-                          Colors.black,
-                          Colors.black87,
-                          Colors.transparent
-                        ],
+                        colors: [Colors.black, Colors.black87, Colors.transparent],
                       ),
                     ),
                   ),
@@ -92,7 +90,7 @@ class _HomeState extends State<Home> {
                       width: 40,
                       height: 40,
                       color: AppColors.yellow,
-                      child: Image.asset('images/ouahid.png'),
+                      child: Image.asset('images/yahia.jpg'),
                     ),
                   ),
                 ),
@@ -108,32 +106,28 @@ class _HomeState extends State<Home> {
                         highlightColor: Colors.white60,
                         child: Text(
                           'About Me',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                       MaterialButton(
                         onPressed: _scrollToStatistics,
                         child: Text(
                           'Experience',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                       MaterialButton(
                         onPressed: _scrollToWorkingProcess,
                         child: Text(
                           'Process',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                       MaterialButton(
                         onPressed: _scrollToRecentProjects,
                         child: Text(
                           'Portfolio',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -146,8 +140,7 @@ class _HomeState extends State<Home> {
                         ),
                         child: Text(
                           'Contact Me',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -162,121 +155,135 @@ class _HomeState extends State<Home> {
         floatingActionButton: _buildFab(),
       ),
       mobileScreen: Scaffold(
-        drawer: Drawer(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  decoration: BoxDecoration(
-                    color: AppColors.yellow,
-                    borderRadius: BorderRadius.circular(1000),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000),
-                    child: Image.asset(
-                      'images/ouahid.png',
-                      fit: BoxFit.cover,
+        drawer: Builder(builder: (context) {
+          return Drawer(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      borderRadius: BorderRadius.circular(1000),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(1000),
+                      child: Image.asset(
+                        'images/yahia.jpg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Divider(),
-                ListTile(
-                  onTap: _scrollToAbout,
-                  title: Text(
-                    'About Me',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListTile(
-                  onTap: _scrollToStatistics,
-                  title: Text(
-                    'Experience',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListTile(
-                  onTap: _scrollToWorkingProcess,
-                  title: Text(
-                    'Process',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListTile(
-                  onTap: _scrollToRecentProjects,
-                  title: Text(
-                    'Portfolio',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Divider(),
-                const SizedBox(height: 20),
-                ListTile(
-                  title: RaisedButton(
-                    onPressed: _scrollToContactUs,
-                    color: AppColors.yellow,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 15,
-                    ),
-                    child: Text(
-                      'Contact Me',
+                  Divider(),
+                  ListTile(
+                    onTap: () {
+                      _scrollToAbout();
+                      Navigator.pop(context);
+                    },
+                    title: Text(
+                      'About Me',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        launch(AppConstants.github);
+                  ListTile(
+                    onTap: () {
+                      _scrollToStatistics();
+                      Navigator.pop(context);
+                    },
+                    title: Text(
+                      'Experience',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  // ListTile(
+                  //   onTap: _scrollToWorkingProcess,
+                  //   title: Text(
+                  //     'Process',
+                  //     style: TextStyle(fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
+                  ListTile(
+                    onTap: () {
+                      _scrollToRecentProjects();
+                      Navigator.pop(context);
+                    },
+                    title: Text(
+                      'Projects',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(),
+                  const SizedBox(height: 20),
+                  ListTile(
+                    title: RaisedButton(
+                      onPressed: () {
+                        _scrollToContactUs();
+                        Navigator.pop(context);
                       },
-                      child: AppIcon(
-                        'icons/github.png',
-                        color: AppColors.black,
+                      color: AppColors.yellow,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 15,
+                      ),
+                      child: Text(
+                        'Contact Me',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        launch(AppConstants.linkedin);
-                      },
-                      child: AppIcon(
-                        'icons/linkedin.png',
-                        color: AppColors.black,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          launch(AppConstants.github);
+                        },
+                        child: AppIcon(
+                          'icons/github.png',
+                          color: AppColors.black,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        launch(AppConstants.twitter);
-                      },
-                      child: AppIcon(
-                        'icons/twitter.png',
-                        color: AppColors.black,
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          launch(AppConstants.linkedin);
+                        },
+                        child: AppIcon(
+                          'icons/linkedin.png',
+                          color: AppColors.black,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        launch(AppConstants.facebook);
-                      },
-                      child: AppIcon(
-                        'icons/facebook.png',
-                        color: AppColors.black,
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          launch(AppConstants.twitter);
+                        },
+                        child: AppIcon(
+                          'icons/twitter.png',
+                          color: AppColors.black,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-              ],
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          launch(AppConstants.facebook);
+                        },
+                        child: AppIcon(
+                          'icons/facebook.png',
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        }),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -304,7 +311,7 @@ class _HomeState extends State<Home> {
                           width: 40,
                           height: 40,
                           color: AppColors.yellow,
-                          child: Image.asset('images/ouahid.png'),
+                          child: Image.asset('images/yahia.jpg'),
                         ),
                       ),
                     ),
@@ -322,11 +329,7 @@ class _HomeState extends State<Home> {
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        colors: [
-                          Colors.black,
-                          Colors.black87,
-                          Colors.transparent
-                        ],
+                        colors: [Colors.black, Colors.black87, Colors.transparent],
                       ),
                     ),
                   ),
@@ -354,13 +357,17 @@ class _HomeState extends State<Home> {
           key: _statisticsGlobaleKey,
           child: Statistics(),
         ),
-        SliverToBoxAdapter(
-          key: _workingProcessGlobaleKye,
-          child: WorkingProcess(),
-        ),
+        // SliverToBoxAdapter(
+        //   key: _workingProcessGlobaleKye,
+        //   child: WorkingProcess(),
+        // ),
         SliverToBoxAdapter(
           key: _recentProjectsGlobaleKey,
           child: MyProjects(),
+        ),
+        SliverToBoxAdapter(
+          key: _recentOtherProjectsGlobaleKey,
+          child: MyOtherProjects(),
         ),
         SliverToBoxAdapter(
           key: _contactUsGlobaleKey,
@@ -380,9 +387,7 @@ class _HomeState extends State<Home> {
           opacity: showFab ? 1 : 0,
           duration: const Duration(milliseconds: 500),
           child: FloatingActionButton(
-            onPressed: showFab
-                ? _scrollToHeader
-                : null, // make sure user cannot click when button hidden
+            onPressed: showFab ? _scrollToHeader : null, // make sure user cannot click when button hidden
             mini: true,
             child: AppIcon('icons/double-up-arrow.png', size: 20),
           ),

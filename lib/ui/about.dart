@@ -8,9 +8,8 @@ import '../config/styles.dart';
 import '../config/colors.dart';
 
 class About extends StatelessWidget {
-  final String _avatar = 'images/ouahid.png';
-  final String _description =
-      "I am developer has around 4 years experience developing mobile and web applications, using different languages and techniques.";
+  final String _avatar = 'images/yahia.jpg';
+  final String _description = AppConstants.description;
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
@@ -56,28 +55,26 @@ class About extends StatelessWidget {
                                 fontSize: 17,
                               ),
                         ),
-                        const SizedBox(height: 30),
-                        Row(
-                          children: [
-                            RaisedButton(
-                              onPressed: () {},
-                              color: AppColors.yellow,
-                              textColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              child: Text('HIRE ME NOW'),
-                            ),
-                            const SizedBox(width: 20),
-                            RaisedButton(
-                              onPressed: _downloadCV,
-                              color: AppColors.black,
-                              textColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
-                              child: Text('VIEW RESUME'),
-                            ),
-                          ],
-                        ),
+                        // const SizedBox(height: 30),
+                        // Row(
+                        // children: [
+                        // RaisedButton(
+                        //   onPressed: () {},
+                        //   color: AppColors.yellow,
+                        //   textColor: Colors.white,
+                        //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                        //   child: Text('HIRE ME NOW'),
+                        // ),
+                        // const SizedBox(width: 20),
+                        // RaisedButton(
+                        //   onPressed: _downloadCV,
+                        //   color: AppColors.black,
+                        //   textColor: Colors.white,
+                        //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                        //   child: Text('VIEW RESUME'),
+                        // ),
+                        // ],
+                        // ),
                       ],
                     ),
                   ),
@@ -135,24 +132,22 @@ class About extends StatelessWidget {
                     ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30),
-              RaisedButton(
-                onPressed: () {},
-                color: AppColors.yellow,
-                textColor: Colors.white,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: Text('HIRE ME NOW'),
-              ),
-              const SizedBox(height: 20),
-              RaisedButton(
-                onPressed: _downloadCV,
-                color: AppColors.black,
-                textColor: Colors.white,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: Text('VIEW RESUME'),
-              ),
+              // const SizedBox(height: 30),
+              // RaisedButton(
+              //   onPressed: () {},
+              //   color: AppColors.yellow,
+              //   textColor: Colors.white,
+              //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              //   child: Text('HIRE ME NOW'),
+              // ),
+              // const SizedBox(height: 20),
+              // RaisedButton(
+              //   onPressed: _downloadCV,
+              //   color: AppColors.black,
+              //   textColor: Colors.white,
+              //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              //   child: Text('VIEW RESUME'),
+              // ),
               const SizedBox(height: 50),
               Text('MY SKILLS', style: AppStyles.title),
               Container(width: 75, height: 2, color: AppColors.yellow),

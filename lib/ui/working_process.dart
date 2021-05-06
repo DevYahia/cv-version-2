@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_portfolio/ui/responsive_widget.dart';
+import 'package:dev_yahia/ui/responsive_widget.dart';
 
 import '../config/styles.dart';
 import '../config/colors.dart';
@@ -26,29 +26,17 @@ class WorkingProcess extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: __buildProcess(
-                      context,
-                      '01.',
-                      'icons/pencil.png',
-                      'Plan',
+                  child: __buildProcess(context, '01.', 'icons/pencil.png', 'Plan',
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor laboris nisi ut aliquip ex ea commodo.'),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: __buildProcess(
-                      context,
-                      '02.',
-                      'icons/design.png',
-                      'Design',
+                  child: __buildProcess(context, '02.', 'icons/design.png', 'Design',
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor laboris nisi ut aliquip ex ea commodo.'),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: __buildProcess(
-                      context,
-                      '03.',
-                      'icons/coding.png',
-                      'Code',
+                  child: __buildProcess(context, '03.', 'icons/coding.png', 'Code',
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor laboris nisi ut aliquip ex ea commodo.'),
                 )
               ],
@@ -87,8 +75,7 @@ class WorkingProcess extends StatelessWidget {
     );
   }
 
-  Widget __buildProcess(BuildContext context, String index, String iconPath,
-      String title, String description) {
+  Widget __buildProcess(BuildContext context, String index, String iconPath, String title, String description) {
     return Card(
       elevation: 3,
       child: Padding(
