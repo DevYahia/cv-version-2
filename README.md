@@ -1,6 +1,6 @@
-# Flutter Web Portfolio
+# CV Version 2
 
-My responsive portfolio using Flutter web.
+Responsive portfolio using Flutter web.
 
 <img src="https://github.com/GeekAbdelouahed/flutter-web-portfolio/raw/master/screenshots/screenshot.png"/>
 
