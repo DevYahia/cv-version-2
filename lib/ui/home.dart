@@ -42,6 +42,14 @@ class _HomeState extends State<Home> {
             colors: [Colors.black, Colors.black87, Colors.transparent],
           ),
         ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Header(),
+            ],
+          ),
+        ),
       ),
     ),
     About(),

@@ -44,6 +44,7 @@ class Header extends StatelessWidget {
             fontSize: fontSize,
             fontWeight: FontWeight.w900,
           ),
+          textAlign: TextAlign.center,
           cursor: '|',
           speed: Duration(milliseconds: 375),
           curve: Curves.easeInOut,
