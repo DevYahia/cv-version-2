@@ -23,18 +23,18 @@ class About extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(1000),
-                    child: Container(
-                      color: AppColors.greyLight,
-                      child: Image.asset(
-                        _avatar,
-                        width: 300,
-                        height: 300,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.circular(1000),
+                  //   child: Container(
+                  //     color: AppColors.greyLight,
+                  //     child: Image.asset(
+                  //       _avatar,
+                  //       width: 300,
+                  //       height: 300,
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(width: 20),
                   Expanded(
                     child: Column(
@@ -50,7 +50,7 @@ class About extends StatelessWidget {
                         ),
                         Text(
                           _description,
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                 color: Colors.black.withOpacity(.7),
                                 fontSize: 17,
                               ),
@@ -103,18 +103,18 @@ class About extends StatelessWidget {
           ),
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(1000),
-                child: Container(
-                  color: AppColors.greyLight,
-                  child: Image.asset(
-                    _avatar,
-                    width: 150,
-                    height: 150,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(1000),
+              //   child: Container(
+              //     color: AppColors.greyLight,
+              //     child: Image.asset(
+              //       _avatar,
+              //       width: 150,
+              //       height: 150,
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 20),
               Text(
                 'ABOUT ME',
@@ -126,7 +126,7 @@ class About extends StatelessWidget {
               ),
               Text(
                 _description,
-                style: Theme.of(context).textTheme.bodyText2.copyWith(
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
                       color: Colors.black.withOpacity(.7),
                       fontSize: 13,
                     ),
@@ -170,5 +170,5 @@ class About extends StatelessWidget {
     launch(AppConstants.cv);
   }
 
-  Widget _buildSkill(Skill skill) => Chip(label: Text(skill.name));
+  Widget _buildSkill(Skill skill) => Chip(label: Text(skill.name!));
 }

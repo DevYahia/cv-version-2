@@ -7,7 +7,7 @@ mixin AppConstants {
 
   static final String github = 'https://github.com/DevYahia';
 
-  static final String linkedin = 'https://www.linkedin.com/in/yahia-salem-331a05180';
+  static final String linkedin = 'https://www.linkedin.com/in/devyahia';
 
   static final String twitter = 'https://twitter.com/DevYahia';
 
@@ -16,5 +16,5 @@ mixin AppConstants {
   static final String cv = 'https://drive.google.com/file/d/1L1gHsEO4nKY-_JW4dVU6Cml7RvxOP1ep/view?usp=sharing';
 
   static final String description =
-      'I am developer who has around 4 years experience developing mobile and web applications, using different languages and techniques.';
+      'I am a developer who has around 4 years of experience developing mobile and web applications, using different frameworks and techniques.';
 }

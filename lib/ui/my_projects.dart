@@ -1,5 +1,6 @@
+import 'package:community_material_icon/community_material_icon.dart';
+import 'package:dev_yahia/services/firestore_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive_widget.dart';
@@ -21,7 +22,20 @@ class MyProjects extends StatelessWidget {
             const SizedBox(height: 3),
             Container(width: 75, height: 2, color: AppColors.yellow),
             const SizedBox(height: 50),
-            ...PROJECTS.map((p) => _buildProject(context, p)).toList(),
+            FutureBuilder<List<Project>>(
+              future: FirestoreDatabase().allProjects(),
+              initialData: [],
+              builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.active) {
+                  if (snapshot.hasData) {
+                    print("DATA: ${snapshot.data}");
+                    return Column(children: snapshot.data!.map((p) => _buildProject(context, p)).toList());
+                  }
+                }
+                return Text("");
+              },
+            ),
+            // ...PROJECTS.map((p) => _buildProject(context, p)).toList(),
           ],
         ),
       ),
@@ -42,11 +56,27 @@ class MyProjects extends StatelessWidget {
             const SizedBox(height: 3),
             Container(width: 50, height: 2, color: AppColors.yellow),
             const SizedBox(height: 50),
-            Wrap(
-              children: PROJECTS.map((p) => _buildProject(context, p)).toList(),
-              spacing: 5,
-              runSpacing: 5,
+            FutureBuilder<List<Project>>(
+              future: FirestoreDatabase().allProjects(),
+              initialData: [],
+              builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    return Wrap(
+                      children: snapshot.data!.map((p) => _buildProject(context, p)).toList(),
+                      spacing: 5,
+                      runSpacing: 5,
+                    );
+                  }
+                }
+                return Text("");
+              },
             ),
+            // Wrap(
+            //   children: PROJECTS.map((p) => _buildProject(context, p)).toList(),
+            //   spacing: 5,
+            //   runSpacing: 5,
+            // ),
           ],
         ),
       ),
@@ -63,7 +93,19 @@ class MyProjects extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: MediaQuery.of(context).size.width * .3,
-                    child: Image.asset(project.image),
+                    child: FutureBuilder<String>(
+                        future: project.getDownloadUrl,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.done) {
+                            if (snapshot.hasData) {
+                              return Image.network(
+                                snapshot.data!,
+                                height: 100.0,
+                              );
+                            }
+                          }
+                          return Text("");
+                        }),
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * .075),
                   Expanded(
@@ -90,53 +132,35 @@ class MyProjects extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            if (project.androidUrl != null)
-                              OutlinedButton.icon(
-                                style: OutlinedButton.styleFrom(
-                                  primary: AppColors.yellow,
-                                  textStyle: TextStyle(color: AppColors.yellow),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 50,
-                                    vertical: 20,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    side: BorderSide(
-                                      color: AppColors.yellow.withOpacity(.5),
-                                      width: 5,
-                                    ),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  launch(project.androidUrl);
-                                },
-                                icon: Icon(MaterialCommunityIcons.google_play),
-                                label: Text('Android'),
-                              ),
+                            IconButton(
+                              onPressed: project.androidId != null
+                                  ? () {
+                                      launch(project.androidUrl);
+                                    }
+                                  : null,
+                              icon: Icon(CommunityMaterialIcons.google_play),
+                              tooltip: 'Android',
+                            ),
                             const SizedBox(width: 20.0),
-                            if (project.iosUrl != null)
-                              OutlinedButton.icon(
-                                style: OutlinedButton.styleFrom(
-                                  primary: AppColors.yellow,
-                                  textStyle: TextStyle(color: AppColors.yellow),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 50,
-                                    vertical: 20,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                    side: BorderSide(
-                                      color: AppColors.yellow.withOpacity(.5),
-                                      width: 5,
-                                    ),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  launch(project.iosUrl);
-                                },
-                                icon: Icon(MaterialCommunityIcons.apple_ios),
-                                label: Text('iOS'),
-                              ),
+                            IconButton(
+                              onPressed: project.iosUrl != null
+                                  ? () {
+                                      launch(project.iosUrl!);
+                                    }
+                                  : null,
+                              icon: Icon(CommunityMaterialIcons.apple_ios),
+                              tooltip: 'iOS',
+                            ),
+                            const SizedBox(width: 20.0),
+                            IconButton(
+                              onPressed: project.webUrl != null
+                                  ? () {
+                                      launch(project.webUrl!);
+                                    }
+                                  : null,
+                              icon: Icon(CommunityMaterialIcons.web),
+                              tooltip: 'Web',
+                            ),
                           ],
                         ),
                       ],
@@ -158,7 +182,19 @@ class MyProjects extends StatelessWidget {
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.width * .75,
-                child: Image.asset(project.image),
+                child: FutureBuilder<String>(
+                    future: project.getDownloadUrl,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          return Image.network(
+                            snapshot.data!,
+                            height: 100.0,
+                          );
+                        }
+                      }
+                      return Text("");
+                    }),
               ),
               SizedBox(width: MediaQuery.of(context).size.width * .075),
               SizedBox(
@@ -184,54 +220,37 @@ class MyProjects extends StatelessWidget {
                 height: MediaQuery.of(context).size.width * .025,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (project.androidUrl != null)
-                    OutlinedButton.icon(
-                      style: OutlinedButton.styleFrom(
-                        primary: AppColors.yellow,
-                        textStyle: TextStyle(color: AppColors.yellow),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                          vertical: 20,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: BorderSide(
-                            color: AppColors.yellow.withOpacity(.5),
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        launch(project.androidUrl);
-                      },
-                      icon: Icon(MaterialCommunityIcons.google_play),
-                      label: Text('Android'),
-                    ),
+                  IconButton(
+                    onPressed: project.androidId != null
+                        ? () {
+                            launch(project.androidUrl);
+                          }
+                        : null,
+                    icon: Icon(CommunityMaterialIcons.google_play),
+                    tooltip: 'Android',
+                  ),
                   const SizedBox(width: 20.0),
-                  if (project.iosUrl != null)
-                    OutlinedButton.icon(
-                      style: OutlinedButton.styleFrom(
-                        primary: AppColors.yellow,
-                        textStyle: TextStyle(color: AppColors.yellow),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                          vertical: 20,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          side: BorderSide(
-                            color: AppColors.yellow.withOpacity(.5),
-                            width: 5,
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        launch(project.iosUrl);
-                      },
-                      icon: Icon(MaterialCommunityIcons.apple_ios),
-                      label: Text('iOS'),
-                    ),
+                  IconButton(
+                    onPressed: project.iosUrl != null
+                        ? () {
+                            launch(project.iosUrl!);
+                          }
+                        : null,
+                    icon: Icon(CommunityMaterialIcons.apple_ios),
+                    tooltip: 'iOS',
+                  ),
+                  const SizedBox(width: 20.0),
+                  IconButton(
+                    onPressed: project.webUrl != null
+                        ? () {
+                            launch(project.webUrl!);
+                          }
+                        : null,
+                    icon: Icon(CommunityMaterialIcons.web),
+                    tooltip: 'Web',
+                  ),
                 ],
               ),
               Divider(

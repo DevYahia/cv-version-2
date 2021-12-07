@@ -16,7 +16,7 @@ class Statistics extends StatelessWidget {
           horizontal: MediaQuery.of(context).size.width * .15,
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          _buildStatistic(context, 'icons/briefcase.png', '4th', 'Year of Medicine'),
+          _buildStatistic(context, 'icons/briefcase.png', '5th', 'Year of Medicine'),
           _buildStatistic(context, 'icons/menu.png', '${PROJECTS.length + OTHER_PROJECTS.length}+', 'Projects Done'),
         ]),
       ),

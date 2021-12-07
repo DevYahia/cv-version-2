@@ -176,7 +176,7 @@ class _ContactUsState extends State<ContactUs> {
                   Expanded(
                     child: TextFormField(
                       validator: (text) {
-                        return (text.isValidName()) ? null : 'Please insert valid name!';
+                        return (text?.isValidName() ?? false) ? null : 'Please insert valid name!';
                       },
                       decoration: InputDecoration(
                         hintText: 'Your Name',
@@ -188,7 +188,7 @@ class _ContactUsState extends State<ContactUs> {
                   Expanded(
                     child: TextFormField(
                       validator: (text) {
-                        return (text.isValidEmail) ? null : 'Please insert valid email!';
+                        return (text?.isValidEmail ?? false) ? null : 'Please insert valid email!';
                       },
                       decoration: InputDecoration(
                         hintText: 'Your Email',
@@ -203,7 +203,7 @@ class _ContactUsState extends State<ContactUs> {
                 minLines: 3,
                 maxLines: 10,
                 validator: (text) {
-                  return (text.isValidName(minLength: 10))
+                  return (text?.isValidName(minLength: 10) ?? false)
                       ? null
                       : 'Please insert valid message!, at least 10 characters';
                 },
@@ -228,7 +228,7 @@ class _ContactUsState extends State<ContactUs> {
   }
 
   void _sendMail() async {
-    bool isValidForm = _formKey.currentState.validate();
+    bool isValidForm = _formKey.currentState?.validate() ?? false;
     if (!isValidForm) return;
 
     final mailto = Mailto(

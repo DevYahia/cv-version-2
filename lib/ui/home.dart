@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dev_yahia/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -12,12 +13,11 @@ import 'icon.dart';
 import 'my_projects.dart';
 import 'other_projects.dart';
 import 'statistics.dart';
-import 'working_process.dart';
 import '../config/colors.dart';
 import '../config/constants.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -117,16 +117,9 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       MaterialButton(
-                        onPressed: _scrollToWorkingProcess,
-                        child: Text(
-                          'Process',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      MaterialButton(
                         onPressed: _scrollToRecentProjects,
                         child: Text(
-                          'Portfolio',
+                          'Projects',
                           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -211,6 +204,16 @@ class _HomeState extends State<Home> {
                     },
                     title: Text(
                       'Projects',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(),
+                  ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.filter);
+                    },
+                    title: Text(
+                      'Palestine Filter',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -382,14 +385,14 @@ class _HomeState extends State<Home> {
     return StreamBuilder<bool>(
       stream: _fabStream.stream,
       builder: (_, data) {
-        final bool showFab = data.hasData && data.data;
+        final bool showFab = data.hasData && data.data!;
         return AnimatedOpacity(
           opacity: showFab ? 1 : 0,
           duration: const Duration(milliseconds: 500),
           child: FloatingActionButton(
             onPressed: showFab ? _scrollToHeader : null, // make sure user cannot click when button hidden
             mini: true,
-            child: AppIcon('icons/double-up-arrow.png', size: 20),
+            child: Icon(Icons.arrow_upward_rounded),
           ),
         );
       },
@@ -398,42 +401,42 @@ class _HomeState extends State<Home> {
 
   void _scrollToHeader() {
     Scrollable.ensureVisible(
-      _headerGlobalKey.currentContext,
+      _headerGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToAbout() {
     Scrollable.ensureVisible(
-      _aboutGlobaleKey.currentContext,
+      _aboutGlobaleKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToStatistics() {
     Scrollable.ensureVisible(
-      _statisticsGlobaleKey.currentContext,
+      _statisticsGlobaleKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToWorkingProcess() {
     Scrollable.ensureVisible(
-      _workingProcessGlobaleKye.currentContext,
+      _workingProcessGlobaleKye.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToRecentProjects() {
     Scrollable.ensureVisible(
-      _recentProjectsGlobaleKey.currentContext,
+      _recentProjectsGlobaleKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToContactUs() {
     Scrollable.ensureVisible(
-      _contactUsGlobaleKey.currentContext,
+      _contactUsGlobaleKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }

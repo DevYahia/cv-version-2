@@ -1,14 +1,14 @@
 class OtherProject {
-  final String name;
-  final String description;
-  final String image;
-  final String url;
-  final List<String> skills;
+  final String? name;
+  final String? description;
+  final String? image;
+  final String? url;
+  final List<String>? skills;
 
-  OtherProject({this.name, this.description, this.image, this.url, this.skills});
+  const OtherProject({this.name, this.description, this.image, this.url, this.skills});
 }
 
-List<OtherProject> OTHER_PROJECTS = [
+const List<OtherProject> OTHER_PROJECTS = [
   // nQuran Extractor
   OtherProject(
     name: "nQuran Extractor",

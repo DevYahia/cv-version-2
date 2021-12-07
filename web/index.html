@@ -16,6 +16,7 @@
 
   <title>dev_yahia</title>
   <link rel="manifest" href="manifest.json">
+  <base href="/">
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
@@ -27,6 +28,30 @@
         navigator.serviceWorker.register('flutter_service_worker.js');
       });
     }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.15/plugins/export/libs/FileSaver.js/FileSaver.min.js"></script> 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCtM0KknBGWCHXlOK_774-mToKjUYguq0Q",
+    authDomain: "portfolio-6d2ab.firebaseapp.com",
+    databaseURL: "https://portfolio-6d2ab.firebaseio.com",
+    projectId: "portfolio-6d2ab",
+    storageBucket: "portfolio-6d2ab.appspot.com",
+    messagingSenderId: "753862377991",
+    appId: "1:753862377991:web:cd11ca79931e593fdb20a2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig); 
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>

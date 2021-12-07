@@ -160,7 +160,7 @@ class Footer extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Divider(
-              color: AppColors.greyLight.withOpacity(.75),
+              color: AppColors.greyLight?.withOpacity(.75),
               thickness: .5,
             ),
             const SizedBox(height: 20),
@@ -170,7 +170,7 @@ class Footer extends StatelessWidget {
                 Text(
                   'Proudly powered by DevYahia ©${DateTime.now().year}',
                   style: TextStyle(
-                    color: AppColors.greyLight.withOpacity(.75),
+                    color: AppColors.greyLight?.withOpacity(.75),
                   ),
                 ),
                 Row(children: _socialMedia()),
@@ -313,7 +313,7 @@ class Footer extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Divider(
-              color: AppColors.greyLight.withOpacity(.75),
+              color: AppColors.greyLight?.withOpacity(.75),
               thickness: .5,
             ),
             const SizedBox(height: 20),
@@ -327,7 +327,7 @@ class Footer extends StatelessWidget {
             Text(
               'Proudly powered by DevYahia ©${DateTime.now().year}',
               style: TextStyle(
-                color: AppColors.greyLight.withOpacity(.75),
+                color: AppColors.greyLight?.withOpacity(.75),
               ),
               textAlign: TextAlign.center,
             ),
@@ -339,7 +339,7 @@ class Footer extends StatelessWidget {
 
   Widget _buildProject(BuildContext context, Project project) => InkWell(
         onTap: () {
-          launch(project.androidUrl);
+          launch(project.androidId!);
         },
         child: ResponsiveWidget(
           desktopScreen: Container(

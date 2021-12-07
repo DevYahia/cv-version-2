@@ -1,10 +1,9 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dev_yahia/data/other_projects.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive_widget.dart';
-import '../data/projects.dart';
 import '../config/styles.dart';
 import '../config/colors.dart';
 
@@ -74,17 +73,17 @@ class MyOtherProjects extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .01,
                         ),
-                        Text(project.name, style: AppStyles.title),
+                        Text(project.name!, style: AppStyles.title),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .01,
                         ),
-                        Text(project.description),
+                        Text(project.description!),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .025,
                         ),
                         Wrap(
                           spacing: 10,
-                          children: project.skills.map((s) => Chip(label: Text(s))).toList(),
+                          children: project.skills!.map((s) => Chip(label: Text(s))).toList(),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .025,
@@ -100,15 +99,15 @@ class MyOtherProjects extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                               side: BorderSide(
-                                color: AppColors.yellow.withOpacity(.5),
+                                color: AppColors.yellow!.withOpacity(.5),
                                 width: 5,
                               ),
                             ),
                           ),
                           onPressed: () {
-                            launch(project.url);
+                            launch(project.url!);
                           },
-                          icon: Icon(MaterialCommunityIcons.github_circle),
+                          icon: Icon(CommunityMaterialIcons.github),
                           label: Text('Source Code'),
                         ),
                       ],
@@ -136,12 +135,12 @@ class MyOtherProjects extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.width * .01,
               ),
-              Text(project.name, style: AppStyles.title),
+              Text(project.name!, style: AppStyles.title),
               SizedBox(
                 height: MediaQuery.of(context).size.width * .01,
               ),
               Text(
-                project.description,
+                project.description!,
                 textAlign: TextAlign.center,
               ),
               SizedBox(
@@ -150,7 +149,7 @@ class MyOtherProjects extends StatelessWidget {
               Wrap(
                 spacing: 10,
                 alignment: WrapAlignment.center,
-                children: project.skills.map((s) => Chip(label: Text(s))).toList(),
+                children: project.skills!.map((s) => Chip(label: Text(s))).toList(),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.width * .025,
@@ -166,15 +165,15 @@ class MyOtherProjects extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide(
-                      color: AppColors.yellow.withOpacity(.5),
+                      color: AppColors.yellow!.withOpacity(.5),
                       width: 5,
                     ),
                   ),
                 ),
                 onPressed: () {
-                  launch(project.url);
+                  launch(project.url!);
                 },
-                icon: Icon(MaterialCommunityIcons.github_circle),
+                icon: Icon(CommunityMaterialIcons.github),
                 label: Text('Source Code'),
               ),
               Divider(
