@@ -1,4 +1,3 @@
-import 'package:dev_yahia/routes/palestine_filter/main.dart';
 import 'package:dev_yahia/ui/home.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +11,6 @@ class Routes {
 
   static final routes = <String, WidgetBuilder>{
     // splash: (BuildContext context) => SplashScreen(),
-    filter: (BuildContext context) => MyHomePage(),
-    filter2: (BuildContext context) => MyHomePage(),
     home: (BuildContext context) => Home(),
   };
 }

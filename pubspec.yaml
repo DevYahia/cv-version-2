@@ -1,9 +1,9 @@
 name: dev_yahia
-description: Portfolio for DevYahia
+description: Portfolio for Yahia Salem (@DevYahia)
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 2.0.0+2
+version: 3.0.0+3
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -31,6 +31,7 @@ dependencies:
   # ui
   google_fonts: ^2.1.0
   animated_text_kit: ^4.2.1
+  scrollable_positioned_list: ^0.2.3
 
 dev_dependencies:
   flutter_test:

@@ -21,18 +21,6 @@ class About extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  // ClipRRect(
-                  //   borderRadius: BorderRadius.circular(1000),
-                  //   child: Container(
-                  //     color: AppColors.greyLight,
-                  //     child: Image.asset(
-                  //       _avatar,
-                  //       width: 300,
-                  //       height: 300,
-                  //       fit: BoxFit.cover,
-                  //     ),
-                  //   ),
-                  // ),
                   const SizedBox(width: 20),
                   Expanded(
                     child: Column(
@@ -97,18 +85,6 @@ class About extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 50),
           child: Column(
             children: [
-              // ClipRRect(
-              //   borderRadius: BorderRadius.circular(1000),
-              //   child: Container(
-              //     color: AppColors.greyLight,
-              //     child: Image.asset(
-              //       _avatar,
-              //       width: 150,
-              //       height: 150,
-              //       fit: BoxFit.cover,
-              //     ),
-              //   ),
-              // ),
               const SizedBox(height: 20),
               Text('WELCOME TO MY WEBSITE', style: AppStyles.title, textAlign: TextAlign.center),
               const SizedBox(height: 10),
@@ -117,22 +93,6 @@ class About extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 13),
                 textAlign: TextAlign.center,
               ),
-              // const SizedBox(height: 30),
-              // RaisedButton(
-              //   onPressed: () {},
-              //   color: AppColors.yellow,
-              //   textColor: Colors.white,
-              //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              //   child: Text('HIRE ME NOW'),
-              // ),
-              // const SizedBox(height: 20),
-              // RaisedButton(
-              //   onPressed: _downloadCV,
-              //   color: AppColors.black,
-              //   textColor: Colors.white,
-              //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-              //   child: Text('VIEW RESUME'),
-              // ),
               const SizedBox(height: 50),
               Text('MY PROGRAMMING SKILLS', style: AppStyles.title, textAlign: TextAlign.center),
               Container(width: 75, height: 2, color: AppColors.yellow),
@@ -150,10 +110,6 @@ class About extends StatelessWidget {
           ),
         ),
       );
-
-  void _downloadCV() {
-    launch(AppConstants.cv);
-  }
 
   Widget _buildSkill(Skill skill) => Chip(label: Text(skill.name!));
 }
