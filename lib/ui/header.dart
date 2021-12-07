@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,14 +19,7 @@ class Header extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '$_name',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+              _nameBuilder(40),
               // Text(
               //   _job,
               //   style: TextStyle(
@@ -65,14 +59,7 @@ class Header extends StatelessWidget {
           child: FittedBox(
             child: Column(
               children: [
-                Text(
-                  '$_name',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
+                _nameBuilder(30),
                 // Text(
                 //   _job,
                 //   style: TextStyle(
@@ -108,6 +95,26 @@ class Header extends StatelessWidget {
           ),
         ),
       );
+
+  Widget _nameBuilder(double fontSize) {
+    return AnimatedTextKit(
+      animatedTexts: [
+        TypewriterAnimatedText(
+          _name,
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontSize: fontSize,
+            fontWeight: FontWeight.w900,
+          ),
+          cursor: '|',
+          speed: Duration(milliseconds: 375),
+          curve: Curves.easeInOut,
+        ),
+      ],
+      repeatForever: true,
+      isRepeatingAnimation: true,
+    );
+  }
 
   void _downloadCV() {
     launch(AppConstants.cv);

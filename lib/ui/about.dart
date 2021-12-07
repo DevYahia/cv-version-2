@@ -13,12 +13,10 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
+        // DESKTOP
         desktopScreen: Container(
-          color: Colors.white,
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .15,
-            vertical: 100,
-          ),
+          color: AppColors.containerColor,
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 100),
           child: Column(
             children: [
               Row(
@@ -41,19 +39,17 @@ class About extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ABOUT ME',
+                          'WELCOME TO MY WEBSITE',
                           style: TextStyle(
                             color: AppColors.yellow,
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         Text(
                           _description,
-                          style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                color: Colors.black.withOpacity(.7),
-                                fontSize: 17,
-                              ),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
                         ),
                         // const SizedBox(height: 30),
                         // Row(
@@ -81,7 +77,7 @@ class About extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 100),
-              Text('MY SKILLS', style: AppStyles.title),
+              Text('MY PROGRAMMING SKILLS', style: AppStyles.title, textAlign: TextAlign.center),
               Container(width: 100, height: 2, color: AppColors.yellow),
               const SizedBox(height: 3),
               Container(width: 75, height: 2, color: AppColors.yellow),
@@ -95,12 +91,10 @@ class About extends StatelessWidget {
             ],
           ),
         ),
+        // MOBILE
         mobileScreen: Container(
-          color: Colors.white,
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .15,
-            vertical: 50,
-          ),
+          color: AppColors.containerColor,
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 50),
           child: Column(
             children: [
               // ClipRRect(
@@ -116,20 +110,11 @@ class About extends StatelessWidget {
               //   ),
               // ),
               const SizedBox(height: 20),
-              Text(
-                'ABOUT ME',
-                style: TextStyle(
-                  color: AppColors.yellow,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text('WELCOME TO MY WEBSITE', style: AppStyles.title, textAlign: TextAlign.center),
+              const SizedBox(height: 10),
               Text(
                 _description,
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Colors.black.withOpacity(.7),
-                      fontSize: 13,
-                    ),
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 13),
                 textAlign: TextAlign.center,
               ),
               // const SizedBox(height: 30),
@@ -149,7 +134,7 @@ class About extends StatelessWidget {
               //   child: Text('VIEW RESUME'),
               // ),
               const SizedBox(height: 50),
-              Text('MY SKILLS', style: AppStyles.title),
+              Text('MY PROGRAMMING SKILLS', style: AppStyles.title, textAlign: TextAlign.center),
               Container(width: 75, height: 2, color: AppColors.yellow),
               const SizedBox(height: 3),
               Container(width: 50, height: 2, color: AppColors.yellow),

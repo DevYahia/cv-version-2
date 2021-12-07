@@ -1,3 +1,4 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/data/other_projects.dart';
 
@@ -16,8 +17,8 @@ class Statistics extends StatelessWidget {
           horizontal: MediaQuery.of(context).size.width * .15,
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          _buildStatistic(context, 'icons/briefcase.png', '5th', 'Year of Medicine'),
-          _buildStatistic(context, 'icons/menu.png', '${PROJECTS.length + OTHER_PROJECTS.length}+', 'Projects Done'),
+          _buildStatistic(context, CommunityMaterialIcons.medical_bag, '5th', 'Medical Student'),
+          _buildStatistic(context, CommunityMaterialIcons.developer_board, '${PROJECTS.length + OTHER_PROJECTS.length}+', 'Projects Done'),
         ]),
       ),
       mobileScreen: Container(
@@ -28,21 +29,21 @@ class Statistics extends StatelessWidget {
         ),
         child: Column(
           children: [
-            _buildStatistic(context, 'icons/briefcase.png', '4th', 'Year of Medicine'),
+            _buildStatistic(context, CommunityMaterialIcons.medical_bag, '5th', 'Medical Student'),
             const SizedBox(height: 50),
-            _buildStatistic(context, 'icons/menu.png', '${PROJECTS.length + OTHER_PROJECTS.length}+', 'Projects Done'),
+            _buildStatistic(context, CommunityMaterialIcons.developer_board, '${PROJECTS.length + OTHER_PROJECTS.length}+', 'Projects Done'),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildStatistic(BuildContext context, String icon, String total, String description) {
+  Widget _buildStatistic(BuildContext context, IconData icon, String total, String description) {
     return ResponsiveWidget(
       desktopScreen: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppIcon(icon, size: 50),
+          Icon(icon, size: 100, color: Colors.white),
           const SizedBox(height: 5),
           Text(
             total,
@@ -66,7 +67,7 @@ class Statistics extends StatelessWidget {
       mobileScreen: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppIcon(icon, size: 40),
+          Icon(icon, size: 80, color: Colors.white),
           const SizedBox(height: 5),
           Text(
             total,

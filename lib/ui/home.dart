@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:dev_yahia/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
@@ -31,6 +32,7 @@ class _HomeState extends State<Home> {
   final _recentProjectsGlobaleKey = GlobalKey();
   final _recentOtherProjectsGlobaleKey = GlobalKey();
   final _contactUsGlobaleKey = GlobalKey();
+  final _footerGlobalKey = GlobalKey();
 
   final _scrollController = ScrollController();
 
@@ -124,13 +126,8 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      RaisedButton(
-                        onPressed: _scrollToContactUs,
-                        color: AppColors.yellow,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 15,
-                        ),
+                      ElevatedButton(
+                        onPressed: _scrollToFooter,
                         child: Text(
                           'Contact Me',
                           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -148,11 +145,14 @@ class _HomeState extends State<Home> {
         floatingActionButton: _buildFab(),
       ),
       mobileScreen: Scaffold(
-        drawer: Builder(builder: (context) {
-          return Drawer(
+        backgroundColor: AppColors.containerColor,
+        drawer: Theme(
+          data: Theme.of(context).copyWith(canvasColor: AppColors.containerColor),
+          child: Drawer(
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  // PROFILE PICTURE
                   Container(
                     width: 100,
                     height: 100,
@@ -170,6 +170,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Divider(),
+                  // ABOUT
                   ListTile(
                     onTap: () {
                       _scrollToAbout();
@@ -180,6 +181,7 @@ class _HomeState extends State<Home> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
+                  // Experience
                   ListTile(
                     onTap: () {
                       _scrollToStatistics();
@@ -197,6 +199,7 @@ class _HomeState extends State<Home> {
                   //     style: TextStyle(fontWeight: FontWeight.bold),
                   //   ),
                   // ),
+                  // PROJECTS
                   ListTile(
                     onTap: () {
                       _scrollToRecentProjects();
@@ -208,28 +211,25 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Divider(),
-                  ListTile(
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.filter);
-                    },
-                    title: Text(
-                      'Palestine Filter',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  //
+                  // ListTile(
+                  //   onTap: () {
+                  //     Navigator.pushNamed(context, Routes.filter);
+                  //   },
+                  //   title: Text(
+                  //     'Palestine Filter',
+                  //     style: TextStyle(fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
                   Divider(),
                   const SizedBox(height: 20),
+                  // CONTACT
                   ListTile(
-                    title: RaisedButton(
+                    title: ElevatedButton(
                       onPressed: () {
-                        _scrollToContactUs();
+                        _scrollToFooter();
                         Navigator.pop(context);
                       },
-                      color: AppColors.yellow,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 15,
-                      ),
                       child: Text(
                         'Contact Me',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -237,6 +237,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  // NETWORK
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -244,9 +245,10 @@ class _HomeState extends State<Home> {
                         onTap: () async {
                           launch(AppConstants.github);
                         },
-                        child: AppIcon(
-                          'icons/github.png',
-                          color: AppColors.black,
+                        child: Icon(
+                          CommunityMaterialIcons.github,
+                          size: 30,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -254,9 +256,10 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           launch(AppConstants.linkedin);
                         },
-                        child: AppIcon(
-                          'icons/linkedin.png',
-                          color: AppColors.black,
+                        child: Icon(
+                          CommunityMaterialIcons.linkedin,
+                          size: 30,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -264,9 +267,10 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           launch(AppConstants.twitter);
                         },
-                        child: AppIcon(
-                          'icons/twitter.png',
-                          color: AppColors.black,
+                        child: Icon(
+                          CommunityMaterialIcons.twitter,
+                          size: 30,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(width: 20),
@@ -274,9 +278,10 @@ class _HomeState extends State<Home> {
                         onTap: () {
                           launch(AppConstants.facebook);
                         },
-                        child: AppIcon(
-                          'icons/facebook.png',
-                          color: AppColors.black,
+                        child: Icon(
+                          CommunityMaterialIcons.facebook,
+                          size: 30,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -285,8 +290,8 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-          );
-        }),
+          ),
+        ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -352,10 +357,12 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> _slivers() => [
+        // ABOUT
         SliverToBoxAdapter(
           key: _aboutGlobaleKey,
           child: About(),
         ),
+        // STATS
         SliverToBoxAdapter(
           key: _statisticsGlobaleKey,
           child: Statistics(),
@@ -364,19 +371,24 @@ class _HomeState extends State<Home> {
         //   key: _workingProcessGlobaleKye,
         //   child: WorkingProcess(),
         // ),
+        // APP PROJECTS
         SliverToBoxAdapter(
           key: _recentProjectsGlobaleKey,
           child: MyProjects(),
         ),
+        // OTHER PROJECTS
         SliverToBoxAdapter(
           key: _recentOtherProjectsGlobaleKey,
           child: MyOtherProjects(),
         ),
+        // CONTACT US
+        // SliverToBoxAdapter(
+        //   key: _contactUsGlobaleKey,
+        //   child: ContactUs(),
+        // ),
+        // FOOTER
         SliverToBoxAdapter(
-          key: _contactUsGlobaleKey,
-          child: ContactUs(),
-        ),
-        SliverToBoxAdapter(
+          key: _footerGlobalKey,
           child: Footer(),
         ),
       ];
@@ -437,6 +449,13 @@ class _HomeState extends State<Home> {
   void _scrollToContactUs() {
     Scrollable.ensureVisible(
       _contactUsGlobaleKey.currentContext!,
+      duration: const Duration(seconds: 1),
+    );
+  }
+
+  void _scrollToFooter() {
+    Scrollable.ensureVisible(
+      _footerGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }

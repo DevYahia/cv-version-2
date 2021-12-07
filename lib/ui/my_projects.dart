@@ -13,7 +13,7 @@ class MyProjects extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       desktopScreen: Container(
-        color: AppColors.greyLight,
+        color: AppColors.containerColor,
         padding: EdgeInsets.symmetric(vertical: 100),
         child: Column(
           children: [
@@ -26,7 +26,7 @@ class MyProjects extends StatelessWidget {
               future: FirestoreDatabase().allProjects(),
               initialData: [],
               builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.active) {
+                if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {
                     print("DATA: ${snapshot.data}");
                     return Column(children: snapshot.data!.map((p) => _buildProject(context, p)).toList());
@@ -40,7 +40,7 @@ class MyProjects extends StatelessWidget {
         ),
       ),
       mobileScreen: Container(
-        color: AppColors.greyLight,
+        color: AppColors.containerColor,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,
           vertical: 50,

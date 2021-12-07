@@ -1,3 +1,4 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -5,10 +6,9 @@ import 'responsive_widget.dart';
 import '../data/projects.dart';
 import '../config/constants.dart';
 import '../config/colors.dart';
-import 'icon.dart';
 
 class Footer extends StatelessWidget {
-  final String _getInTouch = "You have an idea, I am here to turn your dream into real digital solution.";
+  final String _getInTouch = "You have an idea, I am here to turn your dream into a real digital solution!";
   final String _description = AppConstants.description;
 
   @override
@@ -64,7 +64,7 @@ class Footer extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 7),
-                      Text(
+                      SelectableText(
                         AppConstants.mail,
                         style: TextStyle(
                           color: AppColors.greyLight,
@@ -224,7 +224,7 @@ class Footer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 7),
-                Text(
+                SelectableText(
                   AppConstants.mail,
                   style: TextStyle(
                     color: AppColors.greyLight,
@@ -250,7 +250,7 @@ class Footer extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
-            // Aout me
+            // About me
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -343,14 +343,14 @@ class Footer extends StatelessWidget {
         },
         child: ResponsiveWidget(
           desktopScreen: Container(
-            color: AppColors.greyLight,
+            color: AppColors.containerColor,
             padding: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .1,
             height: MediaQuery.of(context).size.width * .1,
             child: Image.asset(project.image),
           ),
           mobileScreen: Container(
-            color: AppColors.greyLight,
+            color: AppColors.containerColor,
             padding: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .2,
             height: MediaQuery.of(context).size.width * .2,
@@ -364,28 +364,44 @@ class Footer extends StatelessWidget {
           onTap: () async {
             launch(AppConstants.github);
           },
-          child: AppIcon('icons/github.png'),
+          child: Icon(
+            CommunityMaterialIcons.github,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(width: 20),
         InkWell(
           onTap: () {
             launch(AppConstants.linkedin);
           },
-          child: AppIcon('icons/linkedin.png'),
+          child: Icon(
+            CommunityMaterialIcons.linkedin,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(width: 20),
         InkWell(
           onTap: () {
             launch(AppConstants.twitter);
           },
-          child: AppIcon('icons/twitter.png'),
+          child: Icon(
+            CommunityMaterialIcons.twitter,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(width: 20),
         InkWell(
           onTap: () {
             launch(AppConstants.facebook);
           },
-          child: AppIcon('icons/facebook.png'),
+          child: Icon(
+            CommunityMaterialIcons.facebook,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
       ];
 }

@@ -16,5 +16,5 @@ mixin AppConstants {
   static final String cv = 'https://drive.google.com/file/d/1L1gHsEO4nKY-_JW4dVU6Cml7RvxOP1ep/view?usp=sharing';
 
   static final String description =
-      'I am a developer who has around 4 years of experience developing mobile and web applications, using different frameworks and techniques.';
+      'Here you will find some of the projects I made in my free time, and some of the freelancing projects I have done for my clients. I study Doctor of Medicine at the University of Jordan, I love programming, math & weight-lifting. Interested in neuroscience. Feel free to contact me!';
 }

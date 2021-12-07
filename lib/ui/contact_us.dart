@@ -26,7 +26,7 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       desktopScreen: Container(
-        color: Colors.white,
+        color: AppColors.containerColor,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,
           vertical: 100,
@@ -74,7 +74,7 @@ class _ContactUsState extends State<ContactUs> {
         ),
       ),
       mobileScreen: Container(
-        color: Colors.white,
+        color: AppColors.containerColor,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,
           vertical: 100,
@@ -129,7 +129,7 @@ class _ContactUsState extends State<ContactUs> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppIcon(imagePath, color: AppColors.black.withOpacity(.7), size: 20),
+          AppIcon(imagePath, color: Colors.white, size: 20),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,15 +137,11 @@ class _ContactUsState extends State<ContactUs> {
               Text(
                 title,
                 style: TextStyle(
-                  color: AppColors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 5),
-              Text(
-                content,
-                style: TextStyle(color: AppColors.black.withOpacity(.7)),
-              ),
+              Text(content),
             ],
           )
         ],
@@ -160,7 +156,6 @@ class _ContactUsState extends State<ContactUs> {
         Text(
           'Have Something To Write?',
           style: TextStyle(
-            color: AppColors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -213,10 +208,7 @@ class _ContactUsState extends State<ContactUs> {
                 ),
               ),
               const SizedBox(height: 20),
-              RaisedButton(
-                color: AppColors.yellow,
-                textColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              ElevatedButton(
                 onPressed: _sendMail,
                 child: Text('Send'),
               ),

@@ -4,8 +4,8 @@ import 'colors.dart';
 
 mixin AppStyles {
   static final TextStyle title = TextStyle(
-    color: AppColors.black.withOpacity(.8),
+    color: AppColors.yellow,
     fontSize: 35,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w900,
   );
 }

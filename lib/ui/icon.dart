@@ -11,7 +11,13 @@ class AppIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: background,
-      child: Image.asset(path, color: color, height: size, width: size),
+      child: Image.asset(
+        path,
+        color: color,
+        height: size,
+        width: size,
+        colorBlendMode: BlendMode.color,
+      ),
     );
   }
 }
