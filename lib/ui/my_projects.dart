@@ -35,7 +35,6 @@ class MyProjects extends StatelessWidget {
                 return Text("");
               },
             ),
-            // ...PROJECTS.map((p) => _buildProject(context, p)).toList(),
           ],
         ),
       ),
@@ -72,11 +71,6 @@ class MyProjects extends StatelessWidget {
                 return Text("");
               },
             ),
-            // Wrap(
-            //   children: PROJECTS.map((p) => _buildProject(context, p)).toList(),
-            //   spacing: 5,
-            //   runSpacing: 5,
-            // ),
           ],
         ),
       ),
@@ -98,9 +92,25 @@ class MyProjects extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.done) {
                             if (snapshot.hasData) {
-                              return Image.network(
-                                snapshot.data!,
-                                height: 100.0,
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: AppColors.yellow!,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.yellow!.withOpacity(0.5),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    snapshot.data!,
+                                    height: 100.0,
+                                  ),
+                                ),
                               );
                             }
                           }
@@ -112,24 +122,17 @@ class MyProjects extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .01,
-                        ),
+                        SizedBox(height: MediaQuery.of(context).size.width * .01),
                         Text(project.name, style: AppStyles.title),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .01,
-                        ),
+                        SizedBox(height: MediaQuery.of(context).size.width * .01),
                         Text(project.description),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .025,
-                        ),
+                        SizedBox(height: MediaQuery.of(context).size.width * .025),
                         Wrap(
-                          spacing: 10,
+                          spacing: 10.0,
+                          runSpacing: 10.0,
                           children: project.skills.map((s) => Chip(label: Text(s))).toList(),
                         ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .025,
-                        ),
+                        SizedBox(height: MediaQuery.of(context).size.width * .025),
                         Row(
                           children: [
                             IconButton(
@@ -138,7 +141,7 @@ class MyProjects extends StatelessWidget {
                                       launch(project.androidUrl);
                                     }
                                   : null,
-                              icon: Icon(CommunityMaterialIcons.google_play),
+                              icon: Icon(CommunityMaterialIcons.google_play, color: Colors.white),
                               tooltip: 'Android',
                             ),
                             const SizedBox(width: 20.0),
@@ -148,7 +151,7 @@ class MyProjects extends StatelessWidget {
                                       launch(project.iosUrl!);
                                     }
                                   : null,
-                              icon: Icon(CommunityMaterialIcons.apple_ios),
+                              icon: Icon(CommunityMaterialIcons.apple_ios, color: Colors.white),
                               tooltip: 'iOS',
                             ),
                             const SizedBox(width: 20.0),
@@ -158,7 +161,7 @@ class MyProjects extends StatelessWidget {
                                       launch(project.webUrl!);
                                     }
                                   : null,
-                              icon: Icon(CommunityMaterialIcons.web),
+                              icon: Icon(CommunityMaterialIcons.web, color: Colors.white),
                               tooltip: 'Web',
                             ),
                           ],
@@ -187,38 +190,49 @@ class MyProjects extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.done) {
                         if (snapshot.hasData) {
-                          return Image.network(
-                            snapshot.data!,
-                            height: 100.0,
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.yellow!,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.yellow!.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: Image.network(
+                                snapshot.data!,
+                                height: 100.0,
+                              ),
+                            ),
                           );
                         }
                       }
                       return Text("");
                     }),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * .075),
               SizedBox(
-                height: MediaQuery.of(context).size.width * .01,
+                width: MediaQuery.of(context).size.width * .075,
+                height: MediaQuery.of(context).size.width * .02,
               ),
               Text(project.name, style: AppStyles.title),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * .01,
-              ),
+              SizedBox(height: MediaQuery.of(context).size.width * .01),
               Text(
                 project.description,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * .025,
-              ),
+              SizedBox(height: MediaQuery.of(context).size.width * .025),
               Wrap(
-                spacing: 10,
+                spacing: 10.0,
+                runSpacing: 10.0,
                 alignment: WrapAlignment.center,
                 children: project.skills.map((s) => Chip(label: Text(s))).toList(),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * .025,
-              ),
+              SizedBox(height: MediaQuery.of(context).size.width * .025),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -228,7 +242,7 @@ class MyProjects extends StatelessWidget {
                             launch(project.androidUrl);
                           }
                         : null,
-                    icon: Icon(CommunityMaterialIcons.google_play),
+                    icon: Icon(CommunityMaterialIcons.google_play, color: Colors.white),
                     tooltip: 'Android',
                   ),
                   const SizedBox(width: 20.0),
@@ -238,7 +252,7 @@ class MyProjects extends StatelessWidget {
                             launch(project.iosUrl!);
                           }
                         : null,
-                    icon: Icon(CommunityMaterialIcons.apple_ios),
+                    icon: Icon(CommunityMaterialIcons.apple_ios, color: Colors.white),
                     tooltip: 'iOS',
                   ),
                   const SizedBox(width: 20.0),
