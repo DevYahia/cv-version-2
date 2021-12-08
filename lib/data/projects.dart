@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:dev_yahia/services/firestore_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 Project projectFromJson(String str) => Project.fromJson(json.decode(str));
 
@@ -20,7 +21,8 @@ class Project {
     required this.skills,
     required this.description,
     required this.image,
-  });
+    String? downloadUrl,
+  }) : _downloadUrl = downloadUrl;
 
   final String? id;
   final String name;
@@ -30,6 +32,8 @@ class Project {
   final List<String> skills;
   final String description;
   final String image;
+
+  final String? _downloadUrl;
 
   factory Project.fromJson(Map<String, dynamic> json, [String? documentId]) => Project(
         id: documentId ?? "",
@@ -52,9 +56,22 @@ class Project {
         "imageUrl": image,
       };
 
-  Future<String> get getDownloadUrl async => await MyFirebaseStorage().getDownloadUrl(this.image);
+  String? get downloadUrl => this._downloadUrl;
 
   String get androidUrl => "https://play.google.com/store/apps/details?id=$androidId";
+
+  Project copyWithDownloadUrl(String? downloadUrl) {
+    return Project(
+      name: this.name,
+      skills: this.skills,
+      description: this.description,
+      image: this.image,
+      androidId: this.androidId,
+      iosUrl: this.iosUrl,
+      webUrl: this.webUrl,
+      downloadUrl: downloadUrl ?? this._downloadUrl,
+    );
+  }
 }
 
 // ignore: non_constant_identifier_names

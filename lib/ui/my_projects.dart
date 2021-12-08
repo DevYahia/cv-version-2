@@ -1,6 +1,8 @@
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:dev_yahia/providers/data_provider.dart';
 import 'package:dev_yahia/services/firestore_database.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive_widget.dart';
@@ -11,6 +13,8 @@ import '../config/colors.dart';
 class MyProjects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final dataProvider = Provider.of<DataProvider>(context);
+
     return ResponsiveWidget(
       desktopScreen: Container(
         color: AppColors.containerColor,
@@ -22,19 +26,7 @@ class MyProjects extends StatelessWidget {
             const SizedBox(height: 3),
             Container(width: 75, height: 2, color: AppColors.yellow),
             const SizedBox(height: 50),
-            FutureBuilder<List<Project>>(
-              future: FirestoreDatabase().allProjects(),
-              initialData: [],
-              builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    print("DATA: ${snapshot.data}");
-                    return Column(children: snapshot.data!.map((p) => _buildProject(context, p)).toList());
-                  }
-                }
-                return Text("");
-              },
-            ),
+            if (dataProvider.projects != null) ...dataProvider.projects!.map((p) => _buildProject(context, p)).toList()
           ],
         ),
       ),
@@ -55,22 +47,12 @@ class MyProjects extends StatelessWidget {
             const SizedBox(height: 3),
             Container(width: 50, height: 2, color: AppColors.yellow),
             const SizedBox(height: 50),
-            FutureBuilder<List<Project>>(
-              future: FirestoreDatabase().allProjects(),
-              initialData: [],
-              builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    return Wrap(
-                      children: snapshot.data!.map((p) => _buildProject(context, p)).toList(),
-                      spacing: 5,
-                      runSpacing: 5,
-                    );
-                  }
-                }
-                return Text("");
-              },
-            ),
+            if (dataProvider.projects != null)
+              Wrap(
+                children: dataProvider.projects!.map((p) => _buildProject(context, p)).toList(),
+                spacing: 5,
+                runSpacing: 5,
+              ),
           ],
         ),
       ),
@@ -85,38 +67,30 @@ class MyProjects extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.width * .3,
-                    child: FutureBuilder<String>(
-                        future: project.getDownloadUrl,
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.done) {
-                            if (snapshot.hasData) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.yellow!,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: AppColors.yellow!.withOpacity(0.5),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  child: Image.network(
-                                    snapshot.data!,
-                                    height: 100.0,
-                                  ),
-                                ),
-                              );
-                            }
-                          }
-                          return Text("");
-                        }),
-                  ),
+                  if (project.downloadUrl != null)
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * .75,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.yellow!,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.yellow!.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.network(
+                            project.downloadUrl!,
+                            height: 100.0,
+                          ),
+                        ),
+                      ),
+                    ),
                   SizedBox(width: MediaQuery.of(context).size.width * .075),
                   Expanded(
                     child: Column(
@@ -183,38 +157,30 @@ class MyProjects extends StatelessWidget {
           width: MediaQuery.of(context).size.width * .7,
           child: Column(
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.width * .75,
-                child: FutureBuilder<String>(
-                    future: project.getDownloadUrl,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        if (snapshot.hasData) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.yellow!,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.yellow!.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15.0),
-                              child: Image.network(
-                                snapshot.data!,
-                                height: 100.0,
-                              ),
-                            ),
-                          );
-                        }
-                      }
-                      return Text("");
-                    }),
-              ),
+              if (project.downloadUrl != null)
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * .75,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow!,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.yellow!.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.network(
+                        project.downloadUrl!,
+                        height: 100.0,
+                      ),
+                    ),
+                  ),
+                ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .075,
                 height: MediaQuery.of(context).size.width * .02,

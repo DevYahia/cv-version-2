@@ -360,23 +360,23 @@ class _HomeState extends State<Home> {
   }
 
   void _scrollToHeader() {
-    itemScrollController.scrollTo(index: 0, duration: Duration(milliseconds: 1000));
+    itemScrollController.scrollTo(index: 0, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
   }
 
   void _scrollToAbout() {
-    itemScrollController.scrollTo(index: 1, duration: Duration(milliseconds: 1000));
+    itemScrollController.scrollTo(index: 1, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
   }
 
   void _scrollToStatistics() {
-    itemScrollController.scrollTo(index: 2, duration: Duration(milliseconds: 1000));
+    itemScrollController.scrollTo(index: 2, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
   }
 
   void _scrollToRecentProjects() {
-    itemScrollController.scrollTo(index: 3, duration: Duration(milliseconds: 1000));
+    itemScrollController.scrollTo(index: 3, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
   }
 
   void _scrollToFooter() {
-    itemScrollController.scrollTo(index: 5, duration: Duration(milliseconds: 1000));
+    itemScrollController.scrollTo(index: 5, duration: Duration(milliseconds: 1000), curve: Curves.easeInOut);
   }
 
   @override
