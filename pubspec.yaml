@@ -32,6 +32,7 @@ dependencies:
   google_fonts: ^2.1.0
   animated_text_kit: ^4.2.1
   scrollable_positioned_list: ^0.2.3
+  auto_animated: ^3.0.1
   # state
   provider: ^6.0.1
 

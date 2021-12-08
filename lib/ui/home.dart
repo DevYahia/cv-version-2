@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:dev_yahia/ui/my_stats.dart';
+import 'package:dev_yahia/ui/programming_about.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -52,8 +54,8 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    About(),
-    Statistics(),
+    MyAbout(),
+    ProgrammingAbout(),
     MyProjects(),
     MyOtherProjects(),
     Footer(),
@@ -80,6 +82,16 @@ class _HomeState extends State<Home> {
           toolbarHeight: 100,
           backgroundColor: Colors.transparent,
           elevation: 0.0,
+          flexibleSpace: Container(
+            height: 100.0,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.black87, Colors.transparent],
+              ),
+            ),
+          ),
           title: Padding(
             padding: EdgeInsets.only(
               left: MediaQuery.of(context).size.width * .15,
@@ -174,6 +186,16 @@ class _HomeState extends State<Home> {
           titleSpacing: 0,
           toolbarHeight: 100,
           backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+            height: 100.0,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.black87, Colors.transparent],
+              ),
+            ),
+          ),
         ),
         drawer: Theme(
           data: Theme.of(context).copyWith(canvasColor: AppColors.containerColor),
@@ -352,7 +374,7 @@ class _HomeState extends State<Home> {
           child: FloatingActionButton(
             onPressed: showFab ? _scrollToHeader : null, // make sure user cannot click when button hidden
             mini: true,
-            child: Icon(Icons.arrow_upward_rounded),
+            child: Icon(CommunityMaterialIcons.arrow_up_bold),
           ),
         );
       },

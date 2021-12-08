@@ -23,4 +23,10 @@ class DataProvider extends ChangeNotifier {
     projects = await Future.wait<Project>(projectsWithUrl);
     notifyListeners();
   }
+
+  Future<void> sendMessage(String? message) async {
+    if (message != null) {
+      _db.sendMessage(message);
+    }
+  }
 }

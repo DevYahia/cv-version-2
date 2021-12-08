@@ -1,30 +1,23 @@
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:dev_yahia/data/other_projects.dart';
+import 'package:dev_yahia/data/projects.dart';
 import 'package:dev_yahia/widgets/stats_widget.dart';
 import 'package:flutter/material.dart';
 import 'responsive_widget.dart';
 
-class ProgrammingStatsSection extends StatelessWidget {
+class MyStatsSection extends StatelessWidget {
   final _statsList = <StatsData>[
     StatsData(
-      iconData: CommunityMaterialIcons.language_python,
-      title: 'Python',
-      subtitle: 'Data Science',
-      url: 'https://www.python.org',
+      iconData: CommunityMaterialIcons.medical_bag,
+      title: '5th Year',
+      subtitle: 'Medical Student',
     ),
     StatsData(
-      iconData: Icons.flutter_dash_rounded,
-      title: 'Flutter',
-      subtitle: 'iOS/Android/Web',
-      url: 'https://flutter.dev',
-    ),
-    StatsData(
-      iconData: CommunityMaterialIcons.git,
-      title: 'Git',
-      subtitle: 'Version Control',
-      url: 'https://git-scm.com',
+      iconData: CommunityMaterialIcons.developer_board,
+      title: '${PROJECTS.length + OTHER_PROJECTS.length}+',
+      subtitle: 'Projects Done',
     ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(

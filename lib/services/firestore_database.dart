@@ -11,4 +11,15 @@ class FirestoreDatabase {
         path: 'projects',
         builder: (data, documentId) => Project.fromJson(data, documentId),
       );
+
+  Future<void> sendMessage(String message) {
+    final timeNow = DateTime.now().toUtc();
+    return _firestoreService.setData(
+      path: 'messages/${timeNow.millisecondsSinceEpoch}',
+      data: {
+        "timestamp": timeNow,
+        "message": message,
+      },
+    );
+  }
 }

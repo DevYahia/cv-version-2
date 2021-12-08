@@ -1,15 +1,14 @@
-import 'package:dev_yahia/ui/my_stats.dart';
+import 'package:dev_yahia/ui/statistics.dart';
 import 'package:dev_yahia/widgets/double_stroke.dart';
+import 'package:dev_yahia/widgets/skill_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'responsive_widget.dart';
-import '../config/constants.dart';
+import '../data/skills.dart';
 import '../config/styles.dart';
 import '../config/colors.dart';
 
-class MyAbout extends StatelessWidget {
-  final String _description = AppConstants.description;
-
+class ProgrammingAbout extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
         // DESKTOP
@@ -18,28 +17,22 @@ class MyAbout extends StatelessWidget {
             Container(
               color: AppColors.containerColor,
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 100),
+              width: double.infinity,
               child: Column(
                 children: [
-                  Text(
-                    'WELCOME TO MY WEBSITE',
-                    style: TextStyle(
-                      color: AppColors.yellow,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  Text('MY PROGRAMMING SKILLS', style: AppStyles.title, textAlign: TextAlign.center),
                   DoubleStrokeWidget(),
                   const SizedBox(height: 50.0),
-                  Text(
-                    _description,
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 17),
-                    textAlign: TextAlign.center,
+                  Wrap(
+                    spacing: 25,
+                    runSpacing: 25,
+                    runAlignment: WrapAlignment.spaceBetween,
+                    children: SKILLS.map(_buildSkill).toList(),
                   ),
                 ],
               ),
             ),
-            MyStatsSection(),
+            ProgrammingStatsSection(),
           ],
         ),
         // MOBILE
@@ -47,23 +40,27 @@ class MyAbout extends StatelessWidget {
           children: [
             Container(
               color: AppColors.containerColor,
+              width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 50),
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
-                  Text('WELCOME TO MY WEBSITE', style: AppStyles.title, textAlign: TextAlign.center),
+                  Text('MY PROGRAMMING SKILLS', style: AppStyles.title, textAlign: TextAlign.center),
                   DoubleStrokeWidget(),
                   const SizedBox(height: 25.0),
-                  Text(
-                    _description,
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 13),
-                    textAlign: TextAlign.center,
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    alignment: WrapAlignment.center,
+                    runAlignment: WrapAlignment.spaceBetween,
+                    children: SKILLS.map(_buildSkill).toList(),
                   ),
                 ],
               ),
             ),
-            MyStatsSection(),
+            ProgrammingStatsSection(),
           ],
         ),
       );
+
+  Widget _buildSkill(Skill skill) => SkillWidget(skill: skill);
 }

@@ -4,9 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:dev_yahia/services/firestore_storage.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
 Project projectFromJson(String str) => Project.fromJson(json.decode(str));
 
 String projectToJson(Project data) => json.encode(data.toJson());
@@ -36,11 +33,11 @@ class Project {
   final String? _downloadUrl;
 
   factory Project.fromJson(Map<String, dynamic> json, [String? documentId]) => Project(
-        id: documentId ?? "",
+        id: documentId,
         name: json["name"] ?? "",
-        androidId: json["androidId"] ?? "",
-        iosUrl: json["iosUrl"] ?? "",
-        webUrl: json["webUrl"] ?? "",
+        androidId: json["androidId"],
+        iosUrl: json["iosUrl"],
+        webUrl: json["webUrl"],
         skills: List<String>.from(json["skills"]?.map((x) => x)),
         description: json["description"] ?? "",
         image: json["imageUrl"] ?? "",

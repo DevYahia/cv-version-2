@@ -32,4 +32,14 @@ class FirestoreService {
     }
     return result;
   }
+
+  Future<void> setData({
+    required String path,
+    required Map<String, dynamic> data,
+    bool merge = false,
+  }) async {
+    final reference = FirebaseFirestore.instance.doc(path);
+    print('$path: $data');
+    await reference.set(data, SetOptions(merge: merge));
+  }
 }
