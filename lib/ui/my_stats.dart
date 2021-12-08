@@ -37,6 +37,7 @@ class MyStatsSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .15, vertical: 50),
         child: ListView.separated(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => StatsWidget(statsData: _statsList[index]),
           separatorBuilder: (context, index) => const SizedBox(height: 50.0),
           itemCount: _statsList.length,
