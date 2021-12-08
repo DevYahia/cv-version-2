@@ -26,9 +26,10 @@ class Header extends StatelessWidget {
               const SizedBox(height: 35.0),
               ElevatedButton(
                 onPressed: () async {
-                  final message = await showDialog<String?>(
+                  final message = await showDialog<Map<String, dynamic>?>(
                     context: context,
                     builder: (context) {
+                      String? name;
                       String? message;
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,14 +57,38 @@ class Header extends StatelessWidget {
                                 ),
                                 // space
                                 const SizedBox(height: 20.0),
-                                // message box
+                                // name box
                                 SizedBox(
                                   width: 300.0,
                                   child: Material(
                                     color: Colors.transparent,
                                     child: TextField(
+                                      onChanged: (val) => name = val,
+                                      decoration: InputDecoration(
+                                        hintText: 'Name (optional)',
+                                        hintStyle: TextStyle(color: Colors.white38),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey[400]!),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // space
+                                const SizedBox(height: 20.0),
+                                // message box
+                                SizedBox(
+                                  width: 300.0,
+                                  height: 120.0,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: TextField(
+                                      expands: true,
+                                      maxLines: null,
                                       onChanged: (val) => message = val,
                                       decoration: InputDecoration(
+                                        hintText: 'Message*',
+                                        hintStyle: TextStyle(color: Colors.white38),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(color: Colors.grey[400]!),
                                         ),
@@ -75,7 +100,10 @@ class Header extends StatelessWidget {
                                 const SizedBox(height: 20.0),
                                 // send button
                                 ElevatedButton.icon(
-                                  onPressed: () => Navigator.pop(context, message),
+                                  onPressed: () => Navigator.pop(context, {
+                                    "name": name,
+                                    "message": message,
+                                  }),
                                   style: ElevatedButton.styleFrom(
                                     padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
                                     shape: RoundedRectangleBorder(
@@ -111,9 +139,119 @@ class Header extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * .15,
           ),
-          child: SizedBox(
-            height: 100.0,
-            child: _nameBuilder(30),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100.0,
+                child: _nameBuilder(30),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  final message = await showDialog<Map<String, dynamic>?>(
+                    context: context,
+                    builder: (context) {
+                      String? name;
+                      String? message;
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.grey[900]!.withOpacity(.87),
+                            ),
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // title
+                                Text(
+                                  "Instant Message",
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                // subtitle
+                                Text(
+                                  "I'll make sure to read all messages",
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                                // space
+                                const SizedBox(height: 20.0),
+                                // name box
+                                SizedBox(
+                                  width: 300.0,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: TextField(
+                                      onChanged: (val) => name = val,
+                                      decoration: InputDecoration(
+                                        hintText: 'Name (optional)',
+                                        hintStyle: TextStyle(color: Colors.white38),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey[400]!),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // space
+                                const SizedBox(height: 20.0),
+                                // message box
+                                SizedBox(
+                                  width: 300.0,
+                                  height: 120.0,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: TextField(
+                                      expands: true,
+                                      maxLines: null,
+                                      onChanged: (val) => message = val,
+                                      decoration: InputDecoration(
+                                        hintText: 'Message*',
+                                        hintStyle: TextStyle(color: Colors.white38),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey[400]!),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // space
+                                const SizedBox(height: 20.0),
+                                // send button
+                                ElevatedButton.icon(
+                                  onPressed: () => Navigator.pop(context, {
+                                    "name": name,
+                                    "message": message,
+                                  }),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                  ),
+                                  label: Text('Send'),
+                                  icon: Icon(CommunityMaterialIcons.flash),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  Provider.of<DataProvider>(context, listen: false).sendMessage(message);
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+                child: Text("Send Me an Instant Message!"),
+              ),
+            ],
           ),
         ),
       );

@@ -12,13 +12,13 @@ class FirestoreDatabase {
         builder: (data, documentId) => Project.fromJson(data, documentId),
       );
 
-  Future<void> sendMessage(String message) {
+  Future<void> sendMessage(Map<String, dynamic> message) {
     final timeNow = DateTime.now().toUtc();
     return _firestoreService.setData(
       path: 'messages/${timeNow.millisecondsSinceEpoch}',
       data: {
         "timestamp": timeNow,
-        "message": message,
+        ...message,
       },
     );
   }

@@ -24,7 +24,7 @@ class DataProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> sendMessage(String? message) async {
+  Future<void> sendMessage(Map<String, dynamic>? message) async {
     if (message != null) {
       _db.sendMessage(message);
     }
