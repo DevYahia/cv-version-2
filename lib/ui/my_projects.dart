@@ -1,6 +1,5 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:dev_yahia/providers/data_provider.dart';
-import 'package:dev_yahia/services/firestore_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -69,7 +68,7 @@ class MyProjects extends StatelessWidget {
                 children: [
                   if (project.downloadUrl != null)
                     SizedBox(
-                      height: MediaQuery.of(context).size.width * .75,
+                      height: MediaQuery.of(context).size.width * .3,
                       child: Container(
                         decoration: BoxDecoration(
                           color: AppColors.yellow!,
