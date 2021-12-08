@@ -147,33 +147,39 @@ class _ProjectWidget extends StatelessWidget {
                       SizedBox(height: MediaQuery.of(context).size.width * .025),
                       Row(
                         children: [
+                          // Android
                           IconButton(
                             onPressed: project.androidId != null
                                 ? () {
                                     launch(project.androidUrl);
                                   }
                                 : null,
-                            icon: Icon(CommunityMaterialIcons.google_play, color: Colors.white),
+                            color: Colors.white,
+                            icon: Icon(CommunityMaterialIcons.google_play),
                             tooltip: 'Android',
                           ),
                           const SizedBox(width: 20.0),
+                          // iOS
                           IconButton(
                             onPressed: project.iosUrl != null
                                 ? () {
                                     launch(project.iosUrl!);
                                   }
                                 : null,
-                            icon: Icon(CommunityMaterialIcons.apple_ios, color: Colors.white),
+                            color: Colors.white,
+                            icon: Icon(CommunityMaterialIcons.apple_ios),
                             tooltip: 'iOS',
                           ),
                           const SizedBox(width: 20.0),
+                          // WEB
                           IconButton(
                             onPressed: project.webUrl != null
                                 ? () {
                                     launch(project.webUrl!);
                                   }
                                 : null,
-                            icon: Icon(CommunityMaterialIcons.web, color: Colors.white),
+                            color: Colors.white,
+                            icon: Icon(CommunityMaterialIcons.web),
                             tooltip: 'Web',
                           ),
                         ],
@@ -240,32 +246,38 @@ class _ProjectWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Android
                 IconButton(
                   onPressed: project.androidId != null
                       ? () {
                           launch(project.androidUrl);
                         }
                       : null,
-                  icon: Icon(CommunityMaterialIcons.google_play, color: Colors.white),
+                  color: Colors.white,
+                  icon: Icon(CommunityMaterialIcons.google_play),
                   tooltip: 'Android',
                 ),
                 const SizedBox(width: 20.0),
+                // iOS
                 IconButton(
                   onPressed: project.iosUrl != null
                       ? () {
                           launch(project.iosUrl!);
                         }
                       : null,
-                  icon: Icon(CommunityMaterialIcons.apple_ios, color: Colors.white),
+                  color: Colors.white,
+                  icon: Icon(CommunityMaterialIcons.apple_ios),
                   tooltip: 'iOS',
                 ),
                 const SizedBox(width: 20.0),
+                // WEB
                 IconButton(
                   onPressed: project.webUrl != null
                       ? () {
                           launch(project.webUrl!);
                         }
                       : null,
+                  color: Colors.white,
                   icon: Icon(CommunityMaterialIcons.web),
                   tooltip: 'Web',
                 ),

@@ -1,4 +1,5 @@
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:dev_yahia/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/data/other_projects.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -72,22 +73,20 @@ class MyOtherProjects extends StatelessWidget {
                         SizedBox(height: MediaQuery.of(context).size.width * .01),
                         Text(project.name!, style: AppStyles.title),
                         SizedBox(height: MediaQuery.of(context).size.width * .01),
-                        Text(
-                          project.description!,
-                          textAlign: TextAlign.center,
-                        ),
+                        Text(project.description!, textAlign: TextAlign.center),
                         SizedBox(height: MediaQuery.of(context).size.width * .025),
                         Wrap(
-                          spacing: 10,
+                          spacing: 10.0,
+                          runSpacing: 10.0,
                           children: project.skills!.map((s) => Chip(label: Text(s))).toList(),
                         ),
                         SizedBox(height: MediaQuery.of(context).size.width * .025),
-                        ElevatedButton.icon(
+                        CustomElevatedButton(
                           onPressed: () {
                             launch(project.url!);
                           },
-                          icon: Icon(CommunityMaterialIcons.github),
-                          label: Text('Source Code'),
+                          label: 'Source Code',
+                          icon: CommunityMaterialIcons.github,
                         ),
                       ],
                     ),
@@ -119,17 +118,17 @@ class MyOtherProjects extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.width * .025),
               Wrap(
                 spacing: 10.0,
-                runSpacing: 5.0,
+                runSpacing: 10.0,
                 alignment: WrapAlignment.center,
                 children: project.skills!.map((s) => Chip(label: Text(s))).toList(),
               ),
               SizedBox(height: MediaQuery.of(context).size.width * .025),
-              ElevatedButton.icon(
+              CustomElevatedButton(
                 onPressed: () {
                   launch(project.url!);
                 },
-                icon: Icon(CommunityMaterialIcons.github),
-                label: Text('Source Code'),
+                label: 'Source Code',
+                icon: CommunityMaterialIcons.github,
               ),
               const SizedBox(height: 60.0),
             ],

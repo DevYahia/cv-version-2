@@ -3,6 +3,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:dev_yahia/config/colors.dart';
 import 'package:dev_yahia/providers/data_provider.dart';
 import 'package:dev_yahia/services/firestore_database.dart';
+import 'package:dev_yahia/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +25,7 @@ class Header extends StatelessWidget {
             children: [
               _nameBuilder(40),
               const SizedBox(height: 35.0),
-              ElevatedButton(
+              CustomElevatedButton(
                 onPressed: () async {
                   final message = await showDialog<Map<String, dynamic>?>(
                     context: context,
@@ -99,19 +100,13 @@ class Header extends StatelessWidget {
                                 // space
                                 const SizedBox(height: 20.0),
                                 // send button
-                                ElevatedButton.icon(
+                                CustomElevatedButton(
                                   onPressed: () => Navigator.pop(context, {
                                     "name": name,
                                     "message": message,
                                   }),
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
-                                  ),
-                                  label: Text('Send'),
-                                  icon: Icon(CommunityMaterialIcons.flash),
+                                  label: 'Send',
+                                  icon: CommunityMaterialIcons.flash,
                                 ),
                               ],
                             ),
@@ -122,13 +117,8 @@ class Header extends StatelessWidget {
                   );
                   Provider.of<DataProvider>(context, listen: false).sendMessage(message);
                 },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-                child: Text("Send Me an Instant Message!"),
+                label: 'Send Me an Instant Message!',
+                icon: CommunityMaterialIcons.text,
               ),
             ],
           ),
@@ -145,7 +135,7 @@ class Header extends StatelessWidget {
                 height: 100.0,
                 child: _nameBuilder(30),
               ),
-              ElevatedButton(
+              CustomElevatedButton(
                 onPressed: () async {
                   final message = await showDialog<Map<String, dynamic>?>(
                     context: context,
@@ -220,19 +210,13 @@ class Header extends StatelessWidget {
                                 // space
                                 const SizedBox(height: 20.0),
                                 // send button
-                                ElevatedButton.icon(
+                                CustomElevatedButton(
                                   onPressed: () => Navigator.pop(context, {
                                     "name": name,
                                     "message": message,
                                   }),
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                    ),
-                                  ),
-                                  label: Text('Send'),
-                                  icon: Icon(CommunityMaterialIcons.flash),
+                                  label: 'Send',
+                                  icon: CommunityMaterialIcons.flash,
                                 ),
                               ],
                             ),
@@ -243,13 +227,8 @@ class Header extends StatelessWidget {
                   );
                   Provider.of<DataProvider>(context, listen: false).sendMessage(message);
                 },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-                child: Text("Send Me an Instant Message!"),
+                label: 'Send Me an Instant Message!',
+                icon: CommunityMaterialIcons.text,
               ),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:dev_yahia/ui/my_stats.dart';
 import 'package:dev_yahia/ui/programming_about.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
@@ -13,7 +12,6 @@ import 'footer.dart';
 import 'header.dart';
 import 'my_projects.dart';
 import 'other_projects.dart';
-import 'statistics.dart';
 import '../config/colors.dart';
 import '../config/constants.dart';
 
@@ -163,6 +161,7 @@ class _HomeState extends State<Home> {
       ),
       mobileScreen: Scaffold(
         backgroundColor: AppColors.containerColor,
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0.0,
           leading: Align(
