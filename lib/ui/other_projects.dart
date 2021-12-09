@@ -101,10 +101,6 @@ class MyOtherProjects extends StatelessWidget {
           width: MediaQuery.of(context).size.width * .7,
           child: Column(
             children: [
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.width * .75,
-              //   child: Image.asset(project.image),
-              // ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .075,
                 height: MediaQuery.of(context).size.width * .01,

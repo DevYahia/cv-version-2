@@ -45,6 +45,7 @@ class ProgrammingStatsSection extends StatelessWidget {
         child: ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) => StatsWidget(statsData: _statsList[index]),
           separatorBuilder: (context, index) => const SizedBox(height: 50.0),
           itemCount: _statsList.length,

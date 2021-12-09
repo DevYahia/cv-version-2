@@ -242,13 +242,6 @@ class _HomeState extends State<Home> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  // ListTile(
-                  //   onTap: _scrollToWorkingProcess,
-                  //   title: Text(
-                  //     'Process',
-                  //     style: TextStyle(fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
                   // PROJECTS
                   ListTile(
                     onTap: () {
@@ -260,17 +253,7 @@ class _HomeState extends State<Home> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Divider(),
                   //
-                  // ListTile(
-                  //   onTap: () {
-                  //     Navigator.pushNamed(context, Routes.filter);
-                  //   },
-                  //   title: Text(
-                  //     'Palestine Filter',
-                  //     style: TextStyle(fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
                   Divider(),
                   const SizedBox(height: 20),
                   // CONTACT
