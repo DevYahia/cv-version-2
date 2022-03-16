@@ -1,7 +1,9 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../providers/data_provider.dart';
 import 'responsive_widget.dart';
 import '../data/projects.dart';
 import '../config/constants.dart';
@@ -13,6 +15,8 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dataProvider = Provider.of<DataProvider>(context);
+
     return ResponsiveWidget(
       desktopScreen: Container(
         color: Colors.black,
@@ -148,11 +152,12 @@ class Footer extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: PROJECTS.take(4).map((p) => _buildProject(context, p)).toList(),
-                      )
+                      if (dataProvider.projects != null)
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: dataProvider.projects!.take(4).map((p) => _buildProject(context, p)).toList(),
+                        )
                     ],
                   ),
                 ),
@@ -304,11 +309,12 @@ class Footer extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: PROJECTS.take(4).map((p) => _buildProject(context, p)).toList(),
-                )
+                if (dataProvider.projects != null)
+                  Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: dataProvider.projects!.take(4).map((p) => _buildProject(context, p)).toList(),
+                  )
               ],
             ),
             const SizedBox(height: 30),
@@ -339,23 +345,73 @@ class Footer extends StatelessWidget {
 
   Widget _buildProject(BuildContext context, Project project) => InkWell(
         onTap: () {
-          launch(project.androidId!);
+          launch(project.androidUrl);
         },
         child: ResponsiveWidget(
-          desktopScreen: Container(
-            color: AppColors.containerColor,
-            padding: const EdgeInsets.all(15),
-            width: MediaQuery.of(context).size.width * .1,
-            height: MediaQuery.of(context).size.width * .1,
-            child: Image.asset(project.image),
-          ),
-          mobileScreen: Container(
-            color: AppColors.containerColor,
-            padding: const EdgeInsets.all(15),
-            width: MediaQuery.of(context).size.width * .2,
-            height: MediaQuery.of(context).size.width * .2,
-            child: Image.asset(project.image),
-          ),
+          desktopScreen: (project.downloadUrl != null)
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width * .1,
+                  height: MediaQuery.of(context).size.width * .1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          project.downloadUrl!,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width * .1,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation(Colors.amber),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          height: MediaQuery.of(context).size.width * .1,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : null,
+          mobileScreen: (project.downloadUrl != null)
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width * .2,
+                  height: MediaQuery.of(context).size.width * .2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          project.downloadUrl!,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return SizedBox(
+                                width: MediaQuery.of(context).size.width * .2,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation(Colors.amber),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          height: MediaQuery.of(context).size.width * .2,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : null,
         ),
       );
 

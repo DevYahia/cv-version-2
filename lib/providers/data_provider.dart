@@ -20,7 +20,11 @@ class DataProvider extends ChangeNotifier {
       return project.copyWithDownloadUrl(downloadUrl);
     }).toList();
 
-    projects = await Future.wait<Project>(projectsWithUrl);
+    final finalProjects = await Future.wait<Project>(projectsWithUrl);
+
+    finalProjects.sort();
+
+    projects = finalProjects;
     notifyListeners();
   }
 

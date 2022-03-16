@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         title: 'DevYahia',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple).copyWith(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange).copyWith(
             secondary: AppColors.yellow,
           ),
           textTheme: GoogleFonts.nunitoTextTheme(

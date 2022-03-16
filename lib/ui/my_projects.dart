@@ -12,19 +12,10 @@ import '../config/colors.dart';
 
 class MyProjects extends StatelessWidget {
   final options = LiveOptions(
-    // Start animation after (default zero)
-    // delay: Duration(milliseconds: 750),
-    // Show each item through (default 250)
     showItemInterval: Duration(milliseconds: 100),
-    // Animation duration (default 250)
     showItemDuration: Duration(milliseconds: 375),
-    // Animations starts at 0.05 visible
-    // item fraction in sight (default 0.025)
     visibleFraction: 0.025,
-    // Repeat the animation of the appearance
-    // when scrolling in the opposite direction (default false)
-    // To get the effect as in a showcase for ListView, set true
-    reAnimateOnVisibility: true,
+    reAnimateOnVisibility: false,
   );
   @override
   Widget build(BuildContext context) {
@@ -124,6 +115,20 @@ class _ProjectWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15.0),
                         child: Image.network(
                           project.downloadUrl!,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return SizedBox(
+                                width: 200.0,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation(Colors.amber),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
                           height: 100.0,
                         ),
                       ),
@@ -148,40 +153,11 @@ class _ProjectWidget extends StatelessWidget {
                       Row(
                         children: [
                           // Android
-                          IconButton(
-                            onPressed: project.androidId != null
-                                ? () {
-                                    launch(project.androidUrl);
-                                  }
-                                : null,
-                            color: Colors.white,
-                            icon: Icon(CommunityMaterialIcons.google_play),
-                            tooltip: 'Android',
-                          ),
+                          linkButtonBuilder(project.androidUrl, ProjectPlatform.android),
+                          // space
                           const SizedBox(width: 20.0),
                           // iOS
-                          IconButton(
-                            onPressed: project.iosUrl != null
-                                ? () {
-                                    launch(project.iosUrl!);
-                                  }
-                                : null,
-                            color: Colors.white,
-                            icon: Icon(CommunityMaterialIcons.apple_ios),
-                            tooltip: 'iOS',
-                          ),
-                          const SizedBox(width: 20.0),
-                          // WEB
-                          IconButton(
-                            onPressed: project.webUrl != null
-                                ? () {
-                                    launch(project.webUrl!);
-                                  }
-                                : null,
-                            color: Colors.white,
-                            icon: Icon(CommunityMaterialIcons.web),
-                            tooltip: 'Web',
-                          ),
+                          linkButtonBuilder(project.iosUrl, ProjectPlatform.ios),
                         ],
                       ),
                     ],
@@ -247,40 +223,11 @@ class _ProjectWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Android
-                IconButton(
-                  onPressed: project.androidId != null
-                      ? () {
-                          launch(project.androidUrl);
-                        }
-                      : null,
-                  color: Colors.white,
-                  icon: Icon(CommunityMaterialIcons.google_play),
-                  tooltip: 'Android',
-                ),
+                linkButtonBuilder(project.androidUrl, ProjectPlatform.android),
+                // space
                 const SizedBox(width: 20.0),
                 // iOS
-                IconButton(
-                  onPressed: project.iosUrl != null
-                      ? () {
-                          launch(project.iosUrl!);
-                        }
-                      : null,
-                  color: Colors.white,
-                  icon: Icon(CommunityMaterialIcons.apple_ios),
-                  tooltip: 'iOS',
-                ),
-                const SizedBox(width: 20.0),
-                // WEB
-                IconButton(
-                  onPressed: project.webUrl != null
-                      ? () {
-                          launch(project.webUrl!);
-                        }
-                      : null,
-                  color: Colors.white,
-                  icon: Icon(CommunityMaterialIcons.web),
-                  tooltip: 'Web',
-                ),
+                linkButtonBuilder(project.iosUrl, ProjectPlatform.ios),
               ],
             ),
             Divider(
@@ -293,4 +240,26 @@ class _ProjectWidget extends StatelessWidget {
       ),
     );
   }
+
+  Widget linkButtonBuilder(String? link, ProjectPlatform platform) {
+    return IconButton(
+      onPressed: link != null
+          ? () {
+              launch(link);
+            }
+          : null,
+      disabledColor: Colors.grey,
+      color: Colors.white,
+      icon: Icon(
+        platform == ProjectPlatform.ios ? CommunityMaterialIcons.apple_ios : CommunityMaterialIcons.google_play,
+      ),
+      tooltip: platform == ProjectPlatform.ios ? 'iOS' : 'Android',
+    );
+  }
+}
+
+enum ProjectPlatform {
+  ios,
+  android,
+  web,
 }
