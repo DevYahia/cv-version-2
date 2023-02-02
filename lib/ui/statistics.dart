@@ -6,16 +6,22 @@ import 'responsive_widget.dart';
 class ProgrammingStatsSection extends StatelessWidget {
   final _statsList = <StatsData>[
     StatsData(
-      iconData: CommunityMaterialIcons.language_python,
-      title: 'Python',
-      subtitle: 'Data Science',
-      url: 'https://www.python.org',
-    ),
-    StatsData(
       iconData: Icons.flutter_dash_rounded,
       title: 'Flutter',
       subtitle: 'iOS/Android/Web',
       url: 'https://flutter.dev',
+    ),
+    StatsData(
+      iconData: CommunityMaterialIcons.language_python,
+      title: 'Python',
+      subtitle: 'Data Science & Automation',
+      url: 'https://www.python.org',
+    ),
+    StatsData(
+      iconData: CommunityMaterialIcons.language_r,
+      title: 'R',
+      subtitle: 'Statistical Language',
+      url: 'https://www.r-project.org/',
     ),
     StatsData(
       iconData: CommunityMaterialIcons.git,
@@ -32,7 +38,7 @@ class ProgrammingStatsSection extends StatelessWidget {
         height: 400,
         color: Colors.black.withOpacity(.7),
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * .15,
+          horizontal: MediaQuery.of(context).size.width * .10,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

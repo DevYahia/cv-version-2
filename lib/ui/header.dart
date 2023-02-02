@@ -1,8 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:community_material_icon/community_material_icon.dart';
-import 'package:dev_yahia/config/colors.dart';
 import 'package:dev_yahia/providers/data_provider.dart';
-import 'package:dev_yahia/services/firestore_database.dart';
 import 'package:dev_yahia/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_yahia/ui/responsive_widget.dart';
@@ -118,7 +116,7 @@ class Header extends StatelessWidget {
                   Provider.of<DataProvider>(context, listen: false).sendMessage(message);
                 },
                 label: 'Send Me an Instant Message!',
-                icon: CommunityMaterialIcons.text,
+                icon: CommunityMaterialIcons.cursor_default_click,
               ),
             ],
           ),
@@ -228,7 +226,7 @@ class Header extends StatelessWidget {
                   Provider.of<DataProvider>(context, listen: false).sendMessage(message);
                 },
                 label: 'Send Me an Instant Message!',
-                icon: CommunityMaterialIcons.text,
+                icon: CommunityMaterialIcons.cursor_default_click,
               ),
             ],
           ),

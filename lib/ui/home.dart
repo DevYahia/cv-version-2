@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 width: 40,
                 height: 40,
-                color: AppColors.yellow,
+                color: AppColors.customAccentColor,
                 child: Image.asset('images/yahia.jpg'),
               ),
             ),
@@ -175,7 +175,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     width: 40,
                     height: 40,
-                    color: AppColors.yellow,
+                    color: AppColors.customAccentColor,
                     child: Image.asset('images/yahia.jpg'),
                   ),
                 ),
@@ -208,7 +208,7 @@ class _HomeState extends State<Home> {
                     height: 100,
                     margin: const EdgeInsets.symmetric(vertical: 20),
                     decoration: BoxDecoration(
-                      color: AppColors.yellow,
+                      color: AppColors.customAccentColor,
                       borderRadius: BorderRadius.circular(1000),
                     ),
                     child: ClipRRect(

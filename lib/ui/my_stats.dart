@@ -12,8 +12,8 @@ class MyStatsSection extends StatelessWidget {
     final dataProvider = Provider.of<DataProvider>(context);
     final _statsList = <StatsData>[
       StatsData(
-        iconData: CommunityMaterialIcons.medical_bag,
-        title: '5th Year',
+        iconData: CommunityMaterialIcons.needle,
+        title: '6th Year',
         subtitle: 'Medical Student',
       ),
       if (dataProvider.projects != null)

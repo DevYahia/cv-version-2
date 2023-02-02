@@ -28,9 +28,9 @@ class MyProjects extends StatelessWidget {
         child: Column(
           children: [
             Text('APP PROJECTS', style: AppStyles.title),
-            Container(width: 100, height: 2, color: AppColors.yellow),
+            Container(width: 100, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 3),
-            Container(width: 75, height: 2, color: AppColors.yellow),
+            Container(width: 75, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 50),
             if (dataProvider.projects != null) // With predefined options
               LiveList.options(
@@ -65,9 +65,9 @@ class MyProjects extends StatelessWidget {
               style: AppStyles.title,
               textAlign: TextAlign.center,
             ),
-            Container(width: 75, height: 2, color: AppColors.yellow),
+            Container(width: 75, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 3),
-            Container(width: 50, height: 2, color: AppColors.yellow),
+            Container(width: 50, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 50),
             if (dataProvider.projects != null)
               Wrap(
@@ -101,10 +101,10 @@ class _ProjectWidget extends StatelessWidget {
                     height: MediaQuery.of(context).size.width * .3,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: AppColors.yellow!,
+                        color: AppColors.customAccentColor!,
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.yellow!.withOpacity(0.5),
+                            color: AppColors.customAccentColor!.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
                           )
@@ -182,10 +182,10 @@ class _ProjectWidget extends StatelessWidget {
                 height: MediaQuery.of(context).size.width * .75,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppColors.yellow!,
+                    color: AppColors.customAccentColor!,
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.yellow!.withOpacity(0.5),
+                        color: AppColors.customAccentColor!.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
                       )

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "753862377991",
+    "firebase_url": "https://portfolio-6d2ab.firebaseio.com",
+    "project_id": "portfolio-6d2ab",
+    "storage_bucket": "portfolio-6d2ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753862377991:android:0a3a8e94d1a1d24fdb20a2",
+        "android_client_info": {
+          "package_name": "com.example.dev_yahia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753862377991-2cde8r36lsqekdp6ho85a0vjfp0f8nrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgQykN7iadgyh9mv8ThHxPQF9JF30SUSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753862377991-2cde8r36lsqekdp6ho85a0vjfp0f8nrc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

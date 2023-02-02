@@ -23,7 +23,7 @@ class MyAbout extends StatelessWidget {
                   Text(
                     'WELCOME TO MY WEBSITE',
                     style: TextStyle(
-                      color: AppColors.yellow,
+                      color: AppColors.customAccentColor,
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                     ),

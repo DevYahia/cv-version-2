@@ -41,6 +41,7 @@ class StatsWidget extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               statsData.title ?? "",
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 50,
@@ -50,6 +51,7 @@ class StatsWidget extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               statsData.subtitle ?? "",
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,

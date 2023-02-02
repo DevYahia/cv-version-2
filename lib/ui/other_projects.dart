@@ -18,9 +18,9 @@ class MyOtherProjects extends StatelessWidget {
         child: Column(
           children: [
             Text('OTHER PROJECTS', style: AppStyles.title),
-            Container(width: 100, height: 2, color: AppColors.yellow),
+            Container(width: 100, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 3),
-            Container(width: 75, height: 2, color: AppColors.yellow),
+            Container(width: 75, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 50),
             ...OTHER_PROJECTS.map((p) => _buildProject(context, p)).toList(),
           ],
@@ -39,9 +39,9 @@ class MyOtherProjects extends StatelessWidget {
               style: AppStyles.title,
               textAlign: TextAlign.center,
             ),
-            Container(width: 75, height: 2, color: AppColors.yellow),
+            Container(width: 75, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 3),
-            Container(width: 50, height: 2, color: AppColors.yellow),
+            Container(width: 50, height: 2, color: AppColors.customAccentColor),
             const SizedBox(height: 50),
             Wrap(
               children: OTHER_PROJECTS.map((p) => _buildProject(context, p)).toList(),

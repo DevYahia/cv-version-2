@@ -8,9 +8,9 @@ class DoubleStrokeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(width: 100, height: 2, color: AppColors.yellow),
+        Container(width: 100, height: 2, color: AppColors.customAccentColor),
         const SizedBox(height: 3),
-        Container(width: 75, height: 2, color: AppColors.yellow),
+        Container(width: 75, height: 2, color: AppColors.customAccentColor),
       ],
     );
   }

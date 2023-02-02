@@ -39,7 +39,7 @@ class Footer extends StatelessWidget {
                           Container(
                             width: 2,
                             height: 20,
-                            color: AppColors.yellow,
+                            color: AppColors.customAccentColor,
                           ),
                           const SizedBox(width: 7.5),
                           Text(
@@ -105,7 +105,7 @@ class Footer extends StatelessWidget {
                           Container(
                             width: 2,
                             height: 20,
-                            color: AppColors.yellow,
+                            color: AppColors.customAccentColor,
                           ),
                           const SizedBox(width: 7.5),
                           Text(
@@ -139,7 +139,7 @@ class Footer extends StatelessWidget {
                           Container(
                             width: 2,
                             height: 20,
-                            color: AppColors.yellow,
+                            color: AppColors.customAccentColor,
                           ),
                           const SizedBox(width: 7.5),
                           Text(
@@ -200,7 +200,7 @@ class Footer extends StatelessWidget {
                     Container(
                       width: 2,
                       height: 20,
-                      color: AppColors.yellow,
+                      color: AppColors.customAccentColor,
                     ),
                     const SizedBox(width: 7.5),
                     Text(
@@ -264,7 +264,7 @@ class Footer extends StatelessWidget {
                     Container(
                       width: 2,
                       height: 20,
-                      color: AppColors.yellow,
+                      color: AppColors.customAccentColor,
                     ),
                     const SizedBox(width: 7.5),
                     Text(
@@ -296,7 +296,7 @@ class Footer extends StatelessWidget {
                     Container(
                       width: 2,
                       height: 20,
-                      color: AppColors.yellow,
+                      color: AppColors.customAccentColor,
                     ),
                     const SizedBox(width: 7.5),
                     Text(
